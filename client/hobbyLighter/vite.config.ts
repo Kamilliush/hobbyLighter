@@ -14,7 +14,18 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@components': fileURLToPath(new URL('./src/components', import.meta.url))
+    },
+  },
+  server: {
+    host: true, // Bind the server to all network interfaces
+    port: 5173, // Frontend port
+    proxy: {
+      '/api': {
+        target: 'http://172.20.10.4:3000', // Replace with your computer's IP
+        changeOrigin: true,
+      },
     },
   },
 })
