@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import ProfileView from '@/views/profile/ProfileView.vue'
 import BadgesComponent from '@/components/BadgesComponent.vue'
 import ProfileEventsComponent from '@/components/ProfileEventsComponent.vue'
 import ProfilePostsComponent from '@/components/ProfilePostsComponent.vue'
+import SignIn from '@/views/SignIn.vue'
+import SignUp from '@/views/SignUp.vue'
 import App from '@/App.vue'
 
 const router = createRouter({
@@ -12,6 +15,16 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: App,
+    },
+    {
+      path: '/',
+      name: 'SignIn',
+      component: SignIn,
+    },
+    {
+      path: '/register',
+      name: 'SignUp',
+      component: SignUp,
     },
     {
       path: '/profile',
