@@ -32,12 +32,16 @@
     import { defineComponent } from "vue";
     import RadarChart from "@components/PentagonChart.vue";
     import Badges from "@components/BadgesComponent.vue"; 
+    import Events from "@components/ProfileEventsComponent.vue";
+    import Posts from "@components/ProfilePostsComponent.vue";
     
     export default defineComponent({
         name: "ProfileView",
         components: {
         RadarChart,
         Badges,  
+        Events,
+        Posts,
         },
     });
   </script>
@@ -132,9 +136,9 @@
 }
 
 .nav_item.active {
-  background-color: #fbbd00;
-  color: black;
-  border-bottom: 1px black;
+    color: black;
+    border-bottom: 2px solid #fbbd00; /* Dodanie podkreślenia */
+    padding-bottom: 5px;
 }
   </style>
   

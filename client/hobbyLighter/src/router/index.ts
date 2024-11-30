@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ProfileView from '@/views/profile/ProfileView.vue'
 import BadgesComponent from '@/components/BadgesComponent.vue'
+import ProfileEventsComponent from '@/components/ProfileEventsComponent.vue'
+import ProfilePostsComponent from '@/components/ProfilePostsComponent.vue'
 import App from '@/App.vue'
 
 const router = createRouter({
@@ -22,6 +24,14 @@ const router = createRouter({
         {
           path: 'badges',
           component: BadgesComponent, // Powiązanie trasy z komponentem Badges
+        },
+        {
+          path: 'events',
+          component: ProfileEventsComponent, // Powiązanie trasy z komponentem Badges
+        },
+        {
+          path: 'posts',
+          component: ProfilePostsComponent, // Powiązanie trasy z komponentem Badges
         },
       ],
     },
