@@ -1,55 +1,115 @@
 <template>
-    <div class="container">
-      <!-- Back Arrow and Logo -->
-      <div class="header">
-        <div class="back-arrow" @click="goBack">
-          <span>&lt;</span>
-        </div>
-        <img src="@/assets/logo.png" alt="Hobby Lighter Logo" class="logo" />
+  <div class="container">
+    <div class="header">
+      <div class="back-arrow" @click="goBack">
+        <span>&lt;</span>
       </div>
-      
-      <!-- Sign Up Form -->
-      <form class="auth-form">
-        <div class="input-group">
-          <input type="text" placeholder="Username" class="input-field" />
-          <font-awesome-icon icon="user" class="input-icon" />
-        </div>
-        <div class="input-group">
-          <input type="email" placeholder="Email" class="input-field" />
-          <font-awesome-icon icon="envelope" class="input-icon" />
-        </div>
-        <div class="input-group">
-          <input :type="passwordVisible ? 'text' : 'password'" placeholder="Password" class="input-field" />
-          <font-awesome-icon :icon="passwordVisible ? 'eye' : 'eye-slash'" class="input-icon" @click="togglePasswordVisibility" />
-        </div>
-        <button type="submit" class="auth-button">Sign Up</button>
-      </form>
-      
-      <!-- Footer -->
-      <p class="footer-text">
-        <a href="/">Already have an account?</a>
-      </p>
+      <img src="@/assets/logo.png" alt="Hobby Lighter Logo" class="logo" />
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'SignUp',
-    data() {
-      return {
-        passwordVisible: false, // Toggle for password visibility
-      };
-    },
-    methods: {
-      goBack() {
-        this.$router.push('/'); // Navigate back to the Sign In page
+    <form class="auth-form" @submit.prevent="handleRegister">
+      <div class="input-group">
+        <input
+          ref="username"
+          v-bind:class="{ 'input-error': error.username }"
+          type="text"
+          placeholder="Username"
+          class="input-field"
+        />
+        <font-awesome-icon icon="user" class="input-icon" />
+      </div>
+      <div class="input-group">
+        <input
+          ref="email"
+          v-bind:class="{ 'input-error': error.email }"
+          type="email"
+          placeholder="Email"
+          class="input-field"
+        />
+        <font-awesome-icon icon="envelope" class="input-icon" />
+      </div>
+      <div class="input-group">
+        <input
+          ref="password"
+          v-bind:class="{ 'input-error': error.password }"
+          :type="passwordVisible ? 'text' : 'password'"
+          placeholder="Password"
+          class="input-field"
+        />
+        <font-awesome-icon
+          :icon="passwordVisible ? 'eye' : 'eye-slash'"
+          class="input-icon"
+          @click="togglePasswordVisibility"
+        />
+      </div>
+      <button type="submit" class="auth-button">Sign Up</button>
+    </form>
+    <p class="footer-text">
+      <a href="/">Already have an account?</a>
+    </p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "SignUp",
+  data() {
+    return {
+      passwordVisible: false,
+      error: {
+        username: false,
+        email: false,
+        password: false,
       },
-      togglePasswordVisibility() {
-        this.passwordVisible = !this.passwordVisible; // Toggle visibility
-      },
+    };
+  },
+  methods: {
+    goBack() {
+      this.$router.push("/");
     },
-  };
-  </script>
+    togglePasswordVisibility() {
+      this.passwordVisible = !this.passwordVisible;
+    },
+    async handleRegister() {
+      const username = this.$refs.username.value;
+      const email = this.$refs.email.value;
+      const password = this.$refs.password.value;
+
+      this.error.username = !username;
+      this.error.email = !email || !this.isValidEmail(email);
+      this.error.password = !password;
+
+      if (!username || !email || !password || !this.isValidEmail(email)) {
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:3000/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, email, password }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          this.error.username = true;
+          this.error.email = true;
+          this.error.password = true;
+        } else {
+          alert("Registration successful!");
+          this.$router.push("/");
+        }
+      } catch (err) {
+        console.error("Error during registration:", err);
+      }
+    },
+    isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    },
+  },
+};
+</script>
+
   
   <style>
   /* Global styles for html and body */
@@ -156,5 +216,8 @@
   .footer-text a:hover {
     text-decoration: underline;
   }
+  .input-error {
+  border: 2px solid red !important;
+}
   </style>
   

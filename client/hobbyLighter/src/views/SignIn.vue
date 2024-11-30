@@ -1,14 +1,30 @@
 <template>
   <div class="container">
     <img src="@/assets/logo.png" alt="Hobby Lighter Logo" class="logo" />
-    <form class="auth-form">
+    <form class="auth-form" @submit.prevent="handleLogin">
       <div class="input-group">
-        <input type="text" placeholder="Username" class="input-field" />
+        <input
+          ref="username"
+          v-bind:class="{ 'input-error': error.username }"
+          type="text"
+          placeholder="Username"
+          class="input-field"
+        />
         <font-awesome-icon icon="user" class="input-icon" />
       </div>
       <div class="input-group">
-        <input :type="passwordVisible ? 'text' : 'password'" placeholder="Password" class="input-field" />
-        <font-awesome-icon :icon="passwordVisible ? 'eye' : 'eye-slash'" class="input-icon" @click="togglePasswordVisibility" />
+        <input
+          ref="password"
+          v-bind:class="{ 'input-error': error.password }"
+          :type="passwordVisible ? 'text' : 'password'"
+          placeholder="Password"
+          class="input-field"
+        />
+        <font-awesome-icon
+          :icon="passwordVisible ? 'eye' : 'eye-slash'"
+          class="input-icon"
+          @click="togglePasswordVisibility"
+        />
       </div>
       <button type="submit" class="auth-button">Sign In</button>
     </form>
@@ -18,15 +34,50 @@
 
 <script>
 export default {
-  name: 'SignIn',
+  name: "SignIn",
   data() {
     return {
-      passwordVisible: false, // Dodane dla przełączania widoczności hasła
+      passwordVisible: false,
+      error: {
+        username: false,
+        password: false,
+      },
     };
   },
   methods: {
     togglePasswordVisibility() {
       this.passwordVisible = !this.passwordVisible;
+    },
+    async handleLogin() {
+      const username = this.$refs.username.value;
+      const password = this.$refs.password.value;
+
+      this.error.username = !username;
+      this.error.password = !password;
+
+      if (!username || !password) {
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:3000/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          this.error.username = true;
+          this.error.password = true;
+        } else {
+          console.log("Login successful!", data.token);
+          // Redirect to the /profile page
+          this.$router.push("/profile");
+        }
+      } catch (err) {
+        console.error("Error during login:", err);
+      }
     },
   },
 };
@@ -154,5 +205,8 @@ html, body {
   .footer-text {
     font-size: 0.85rem;    /* Slightly smaller text size for mobile */
   }
+}
+.input-error {
+  border: 2px solid red !important;
 }
 </style>

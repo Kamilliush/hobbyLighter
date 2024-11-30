@@ -13,11 +13,6 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: App,
-    },
-    {
-      path: '/',
       name: 'SignIn',
       component: SignIn,
     },
