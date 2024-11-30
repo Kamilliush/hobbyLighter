@@ -18,4 +18,8 @@ export default defineConfig({
       '@components': fileURLToPath(new URL('./src/components', import.meta.url))
     },
   },
+  server: {
+    host: true, // Bind the server to all network interfaces
+    port: 5173,      // Frontend port
+  },
 })

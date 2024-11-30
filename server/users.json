@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "username": "bartek",
+    "password": "$2a$10$kWMMR35jg4uxPtxuvh2nfetckKurlZ2yhi3HQwqxNtiCbviNrufPi"
+  },
+  {
+    "username": "heher",
+    "password": "$2a$10$x7Tz5sXcgizIbmtvc1qC4Oi3HsfLqLzwLA1EGbiaLQ/om9SXn2k6W"
+  },
+  {
+    "username": "Bartek",
+    "password": "$2a$10$SFOdLndAhQVEIxQ/9oXK9.eMQg1jzYiOSeBgOkON0z99X.rgEhI8a"
+  }
+]
