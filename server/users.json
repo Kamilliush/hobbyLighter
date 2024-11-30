@@ -58,5 +58,17 @@
     "email": "herherh@gmaige.cewg",
     "password": "$2a$10$VoPF0kjtvvXGsDIUP.zk4uos/A61YHHhG8580ORi6KyhFgHD6csQi",
     "hobbies": []
+  },
+  {
+    "username": "adrian",
+    "email": "adek@gmail.com",
+    "password": "$2a$10$vTQgCY0Q2nYr3xDxneigD.GkOQUuFsTiwN9tYOf1I0PMa.3T21PV6",
+    "hobbies": [
+      "Photography",
+      "Gardening",
+      "Writing",
+      "Quilting",
+      "Gaming"
+    ]
   }
 ]
