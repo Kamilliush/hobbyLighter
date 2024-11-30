@@ -46,7 +46,7 @@
     });
   </script>
   
-  <style>
+  <style scoped>
   .profile {
     min-height: 15vh;
     width: 100%;
