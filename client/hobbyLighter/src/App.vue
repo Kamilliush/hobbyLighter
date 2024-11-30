@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 import Navbar from './components/Navbar.vue'
 import Navigation from './components/Navigation.vue'
+import MainPage from './components/MainPage.vue'
 </script>
 
 <template>
-
-
       
-
   <Navbar/>
+  <MainPage/>
   <Navigation/>
 
 </template>
