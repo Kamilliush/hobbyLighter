@@ -83,8 +83,7 @@ export default {
       }
 
       try {
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-        const response = await fetch(`http://172.20.10.4:3000/api/auth/register`, {
+        const response = await fetch('/api/auth/register', {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, email, password }),
@@ -97,7 +96,11 @@ export default {
           this.error.password = true;
         } else {
           alert("Registration successful!");
-          this.$router.push("/");
+          // Store the token received from registration
+          const token = data.token;
+          localStorage.setItem('token', token);
+          // Redirect to hobby selection
+          this.$router.push('/select-hobbies');
         }
       } catch (err) {
         console.error("Error during registration:", err);
@@ -111,7 +114,6 @@ export default {
 };
 </script>
 
-  
   <style>
   /* Global styles for html and body */
   html, body {

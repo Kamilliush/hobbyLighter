@@ -1,22 +1,62 @@
 [
   {
     "username": "bartek",
-    "password": "$2a$10$kWMMR35jg4uxPtxuvh2nfetckKurlZ2yhi3HQwqxNtiCbviNrufPi"
+    "password": "$2a$10$kWMMR35jg4uxPtxuvh2nfetckKurlZ2yhi3HQwqxNtiCbviNrufPi",
+    "hobbies": []
   },
   {
     "username": "heher",
-    "password": "$2a$10$x7Tz5sXcgizIbmtvc1qC4Oi3HsfLqLzwLA1EGbiaLQ/om9SXn2k6W"
+    "password": "$2a$10$x7Tz5sXcgizIbmtvc1qC4Oi3HsfLqLzwLA1EGbiaLQ/om9SXn2k6W",
+    "hobbies": []
   },
   {
     "username": "Bartek",
-    "password": "$2a$10$SFOdLndAhQVEIxQ/9oXK9.eMQg1jzYiOSeBgOkON0z99X.rgEhI8a"
+    "password": "$2a$10$SFOdLndAhQVEIxQ/9oXK9.eMQg1jzYiOSeBgOkON0z99X.rgEhI8a",
+    "hobbies": []
   },
   {
     "username": "yoooo",
-    "password": "$2a$10$jXRRUfIRDHo60WF.rvoLUu/HsxyjA8DQCgupN/mEKkLDrX1dh4T4S"
+    "password": "$2a$10$jXRRUfIRDHo60WF.rvoLUu/HsxyjA8DQCgupN/mEKkLDrX1dh4T4S",
+    "hobbies": []
   },
   {
     "username": "Jola",
-    "password": "$2a$10$sKK4IlH6kumeoR2XK.fQ8Owhzb37dOceoLpFUJd5T5fDage/nU/62"
+    "password": "$2a$10$sKK4IlH6kumeoR2XK.fQ8Owhzb37dOceoLpFUJd5T5fDage/nU/62",
+    "hobbies": []
+  },
+  {
+    "username": "AsiaSkibidi",
+    "password": "$2a$10$Xp.lvk4ZRbF/8bsMIDmsC.u58s4aAHnCBMMlzDtm.8xKhm/4E.VtS",
+    "hobbies": []
+  },
+  {
+    "username": "bart",
+    "email": "bart@gmail.com",
+    "password": "$2a$10$WnBSkNmSeHwJ3SS9fFaRqevvCkDdkpMTS7wUqVB6fhwkYUr/vv2Qy",
+    "hobbies": []
+  },
+  {
+    "username": "bartttt",
+    "email": "bart@gmail.com",
+    "password": "$2a$10$asQLZEmB92w3OXiCTGMIMOOcmPcGUWhfHgx5lU/CIF7psnQexwtf2",
+    "hobbies": []
+  },
+  {
+    "username": "kamil",
+    "email": "kamil@gmail.com",
+    "password": "$2a$10$XB96U4bhPxeG3GW1Sxlsy.If5A7KdBNlW2cmNZTZoG2jm1Q3x6JTK",
+    "hobbies": [
+      "Horse Riding",
+      "Leather Crafting",
+      "Reading",
+      "Traveling",
+      "Gardening"
+    ]
+  },
+  {
+    "username": "erhher",
+    "email": "herherh@gmaige.cewg",
+    "password": "$2a$10$VoPF0kjtvvXGsDIUP.zk4uos/A61YHHhG8580ORi6KyhFgHD6csQi",
+    "hobbies": []
   }
 ]
