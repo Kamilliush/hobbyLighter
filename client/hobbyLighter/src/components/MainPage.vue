@@ -12,7 +12,6 @@
         <form @submit.prevent="addPost" class="post-form">
           <input v-model="newPost.title" type="text" placeholder="Title" required />
           <textarea v-model="newPost.content" placeholder="Description" required></textarea>
-          <input v-model="newPost.author" type="text" placeholder="Author" required />
           <input v-model="newPost.location" type="text" placeholder="Location" required />
           <input v-model="newPost.image" type="url" placeholder="Image URL" />
           <button type="submit">Add Post</button>
@@ -62,6 +61,7 @@
 import Navbar from "@/components/Navbar.vue";
 import Navigation from "@/components/Navigation.vue";
 import axios from "axios";
+import { useUserStore } from "@/stores/user"; // Import Pinia store
 
 export default {
   name: "MainPage",
@@ -74,7 +74,6 @@ export default {
       posts: [],
       newPost: {
         title: "",
-        author: "",
         location: "",
         content: "",
         image: "",
@@ -91,10 +90,12 @@ export default {
       }
     },
     async addPost() {
+      const userStore = useUserStore(); // Get current user
       try {
-        const response = await axios.post("http://localhost:3000/api/posts", this.newPost);
+        const newPost = { ...this.newPost, author: userStore.username }; // Add author's username
+        const response = await axios.post("http://localhost:3000/api/posts", newPost);
         this.posts.push(response.data);
-        this.newPost = { title: "", author: "", location: "", content: "", image: "" };
+        this.newPost = { title: "", location: "", content: "", image: "" };
       } catch (error) {
         console.error("Error adding post:", error);
       }
@@ -121,11 +122,12 @@ export default {
       this.posts[index].showCommentForm = !this.posts[index].showCommentForm;
     },
     async addComment(index) {
+      const userStore = useUserStore(); // Get current user
       const post = this.posts[index];
       if (post.newCommentText.trim()) {
         try {
           const response = await axios.post(`http://localhost:3000/api/posts/${post.id}/comments`, {
-            author: "You",
+            author: userStore.username, // Use logged-in user's username
             text: post.newCommentText,
           });
           post.comments.push(response.data);
@@ -142,7 +144,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .main-page {
@@ -263,14 +264,6 @@ h2 {
   font-weight: bold;
 }
 
-.hashtag-button {
-  background: none;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5px;
-  cursor: pointer;
-}
-
 .post-content {
   margin-bottom: 1rem;
 }
@@ -306,7 +299,6 @@ h2 {
   cursor: pointer;
 }
 
-/* Scrollbar styling for main-content */
 .main-content::-webkit-scrollbar {
   width: 8px;
 }

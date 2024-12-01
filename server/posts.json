@@ -5,7 +5,8 @@
     "location": "City, Country",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed.",
     "image": "https://via.placeholder.com/300",
-    "likes": 3213,
+    "id": 1733030119666,
+    "likes": 3216,
     "comments": [
       {
         "author": "policeman_jack",
@@ -22,12 +23,124 @@
     ]
   },
   {
-    "title": "s",
-    "author": "s",
-    "location": "s",
-    "content": "s",
+    "title": "test",
+    "author": "test",
+    "location": "test",
+    "content": "test",
     "image": "",
     "id": 1733029911689,
+    "likes": 0,
+    "comments": [
+      {
+        "author": "You",
+        "text": "Fajny post, mordo"
+      },
+      {
+        "author": "You",
+        "text": "Well Done"
+      },
+      {
+        "author": "You",
+        "text": "Nice"
+      },
+      {
+        "author": "rr",
+        "text": "dsad"
+      }
+    ]
+  },
+  {
+    "title": "Hejka",
+    "location": "dsad",
+    "content": "dad",
+    "image": "",
+    "author": "rr",
+    "id": 1733031135646,
+    "likes": 0,
+    "comments": [
+      {
+        "author": "rr",
+        "text": "dd"
+      },
+      {
+        "author": "a",
+        "text": "a"
+      },
+      {
+        "author": "a",
+        "text": "das"
+      },
+      {
+        "author": "a",
+        "text": "ddd"
+      }
+    ]
+  },
+  {
+    "title": "d",
+    "location": "d",
+    "content": "d",
+    "image": "",
+    "author": "rr",
+    "id": 1733031149260,
+    "likes": 0,
+    "comments": []
+  },
+  {
+    "title": "dad",
+    "location": "dsada",
+    "content": "dsada",
+    "image": "",
+    "author": "a",
+    "id": 1733031202338,
+    "likes": 0,
+    "comments": [
+      {
+        "author": "a",
+        "text": "JA JESTEM A"
+      },
+      {
+        "author": "rr",
+        "text": "dsd"
+      }
+    ]
+  },
+  {
+    "title": "dsda",
+    "location": "dsada",
+    "content": "dasda",
+    "image": "",
+    "author": "a",
+    "id": 1733031217476,
+    "likes": 0,
+    "comments": []
+  },
+  {
+    "title": "dsa",
+    "location": "dsa",
+    "content": "dsa",
+    "image": "",
+    "author": "rr",
+    "id": 1733031518085,
+    "likes": 0,
+    "comments": [
+      {
+        "author": "rr",
+        "text": "dsda"
+      },
+      {
+        "author": "a",
+        "text": "aa"
+      }
+    ]
+  },
+  {
+    "title": "dsad",
+    "location": "dsad",
+    "content": "dsada",
+    "image": "",
+    "author": "rr",
+    "id": 1733031522953,
     "likes": 0,
     "comments": []
   }

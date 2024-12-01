@@ -214,17 +214,22 @@ app.patch("/api/posts/:id/dislike", (req, res) => {
 // Dodawanie komentarza
 app.post("/api/posts/:id/comments", (req, res) => {
   try {
-    const posts = readFromFile(postsFilePath);
-    const post = posts.find((p) => p.id === parseInt(req.params.id));
+    const posts = readFromFile(postsFilePath); // Odczytaj posty z pliku
+    const post = posts.find((p) => p.id === parseInt(req.params.id)); // Znajdź post o odpowiednim ID
     if (!post) return res.status(404).json({ message: "Post nie znaleziony" });
-    const newComment = { ...req.body };
-    post.comments.push(newComment);
-    writeToFile(postsFilePath, posts);
-    res.status(201).json(newComment);
+
+    const newComment = { ...req.body }; // Utwórz nowy komentarz na podstawie danych z żądania
+    post.comments.push(newComment); // Dodaj komentarz do listy komentarzy w danym poście
+
+    writeToFile(postsFilePath, posts); // Zapisz zaktualizowane posty z powrotem do pliku
+    res.status(201).json(newComment); // Zwróć nowy komentarz jako odpowiedź
   } catch (error) {
+    console.error("Błąd podczas dodawania komentarza:", error);
     res.status(500).json({ message: "Błąd podczas dodawania komentarza" });
   }
 });
+
+
 
 // Start serwera
 app.listen(PORT, () => {
