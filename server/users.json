@@ -82,5 +82,17 @@
       "Music",
       "Traveling"
     ]
+  },
+  {
+    "username": "Angelika",
+    "email": "angelika@gmail.com",
+    "password": "$2a$10$OemX8q0wm5rh.ilIxgvQ9O6HVOVjM7naACsAirr0bBGZRuFkxKuFG",
+    "hobbies": [
+      "Horse Riding",
+      "Photography",
+      "Drawing",
+      "Bird Watching",
+      "Model Building"
+    ]
   }
 ]

@@ -32,6 +32,11 @@ const router = createRouter({
       component: SignUp,
     },
     {
+      path: '/search',
+      name: 'Search',
+      component: () => import('@/components/SearchBar.vue'),
+    },
+    {
       path: '/events',
       name: 'events',
       component: () => import('../views/events/EventsView.vue'),

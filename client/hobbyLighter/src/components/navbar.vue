@@ -5,12 +5,11 @@
     </div>
     <div class="navbar-right">
       <div class="blueBg">
-        <!-- Link to add a new post -->
         <router-link to="/main" class="button-link">
           <i class="fas fa-plus"></i>
         </router-link>
         <div class="yellowBg">
-          <!-- Link to search page -->
+          <!-- Link to the search page -->
           <router-link to="/search" class="button-link">
             <i class="fa-solid fa-magnifying-glass"></i>
           </router-link>

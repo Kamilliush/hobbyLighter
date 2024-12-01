@@ -156,6 +156,32 @@ app.get("/api/hobbies", (req, res) => {
   res.status(200).json({ hobbies: hobbiesData.hobbies.map((h) => h.name) });
 });
 
+// Search hobbies based on query
+app.get("/api/search", (req, res) => {
+  const query = req.query.q?.toLowerCase() || ""; // Get the search query
+
+  if (!fs.existsSync(hobbiesFilePath)) {
+    return res.status(500).json({ message: "Hobbies file not found" });
+  }
+
+  try {
+    // Read hobbies from the JSON file
+    const hobbiesData = JSON.parse(fs.readFileSync(hobbiesFilePath, "utf-8"));
+    const hobbies = hobbiesData.hobbies.map((hobby) => hobby.name);
+
+    // Filter hobbies that include the query string (case-insensitive)
+    const filteredHobbies = query
+      ? hobbies.filter((hobby) => hobby.toLowerCase().includes(query))
+      : hobbies; // Return all hobbies if query is empty
+
+    res.json({ results: filteredHobbies });
+  } catch (error) {
+    console.error("Error reading hobbies:", error);
+    res.status(500).json({ message: "Error fetching hobbies" });
+  }
+});
+
+
 // Start the server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
