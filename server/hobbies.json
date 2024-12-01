@@ -10,11 +10,11 @@
     },
     {
       "name": "Cooking",
-      "count": 32
+      "count": 33
     },
     {
       "name": "Gardening",
-      "count": 28
+      "count": 29
     },
     {
       "name": "Photography",
@@ -22,15 +22,15 @@
     },
     {
       "name": "Music",
-      "count": 21
+      "count": 22
     },
     {
       "name": "Sports",
-      "count": 12
+      "count": 13
     },
     {
       "name": "Drawing",
-      "count": 12
+      "count": 13
     },
     {
       "name": "Writing",
@@ -70,7 +70,7 @@
     },
     {
       "name": "Swimming",
-      "count": 7
+      "count": 9
     },
     {
       "name": "Running",
@@ -166,7 +166,7 @@
     },
     {
       "name": "Collecting Antiques",
-      "count": 6
+      "count": 7
     },
     {
       "name": "Leather Crafting",
@@ -238,7 +238,7 @@
     },
     {
       "name": "Horse Riding",
-      "count": 7
+      "count": 9
     },
     {
       "name": "Sailing",

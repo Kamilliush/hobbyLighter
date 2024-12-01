@@ -57,7 +57,7 @@ export default {
   methods: {
     async fetchAllHobbies() {
       try {
-        const response = await fetch("http://172.20.10.4:3000/api/hobbies");
+        const response = await fetch("http://172.20.10.2:3000/api/hobbies");
         const data = await response.json();
         this.allHobbies = data.hobbies;
       } catch (error) {
@@ -91,7 +91,7 @@ export default {
     async submitHobbies() {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://172.20.10.4:3000/api/users/hobbies", {
+        const response = await fetch("http://172.20.10.2:3000/api/users/hobbies", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

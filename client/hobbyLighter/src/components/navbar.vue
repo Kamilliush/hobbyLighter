@@ -4,26 +4,25 @@
       <img src="../assets/logo.png" alt="Logo" height="100%" class="logo" />
     </div>
     <div class="navbar-right">
-      <div class="blueBg">
-        <router-link to="/main" class="button-link">
-          <i class="fas fa-plus"></i>
+      <div class="blueBg" @click="$emit('toggle-form')">
+        <i class="fas fa-plus"></i>
+      </div>
+      <div class="yellowBg">
+        <router-link to="/search" class="button-link">
+          <i class="fa-solid fa-magnifying-glass"></i>
         </router-link>
-        <div class="yellowBg">
-          <!-- Link to the search page -->
-          <router-link to="/search" class="button-link">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </router-link>
-        </div>
       </div>
     </div>
   </nav>
 </template>
+
 
 <script>
 export default {
   name: "Navbar",
 };
 </script>
+
 
 <style scoped>
 .logo {
@@ -37,11 +36,11 @@ export default {
   justify-content: space-between;
   width: 100%;
   height: 8vh;
-  position: fixed; /* Fix navbar to the top */
-  top: 0; /* Position navbar at the top */
+  position: fixed;
+  top: 0; 
   left: 0;
-  z-index: 1000; /* Ensure navbar is above other elements */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for distinction */
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-left {
@@ -64,6 +63,10 @@ export default {
   height: 45px;
   display: flex;
   justify-content: center;
+  margin-right: -45px;
+  padding-right: 30px;
+  font-size: 20px;
+  color: #fff;
   align-items: center;
 }
 
@@ -71,7 +74,6 @@ export default {
   background-color: #FCA311;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  z-index: 1;
   width: 45px;
   height: 45px;
   display: flex;
@@ -79,7 +81,6 @@ export default {
   align-items: center;
 }
 
-/* Style for router-link to look like buttons */
 .button-link {
   display: flex;
   align-items: center;
@@ -99,4 +100,13 @@ export default {
 .button-link:hover {
   color: #fff;
 }
+.post-form {
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.post-form[hidden] {
+  opacity: 0;
+}
+
 </style>
