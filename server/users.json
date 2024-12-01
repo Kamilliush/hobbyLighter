@@ -70,5 +70,17 @@
       "Quilting",
       "Gaming"
     ]
+  },
+  {
+    "username": "jaja",
+    "email": "jaja@gmail.com",
+    "password": "$2a$10$qHa8spHEAUZcVud1Iozt0ex3IIwcmqTRZApkGxMhmtKLvKLhdABKm",
+    "hobbies": [
+      "Reading",
+      "Gardening",
+      "Writing",
+      "Traveling",
+      "Cooking"
+    ]
   }
 ]

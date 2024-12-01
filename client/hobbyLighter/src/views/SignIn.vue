@@ -60,8 +60,7 @@ export default {
       }
 
       try {
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-        const response = await fetch(`http://172.20.10.4:3000/api/auth/login`, {
+        const response = await fetch(`/api/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, password }),
@@ -71,13 +70,17 @@ export default {
         if (!response.ok) {
           this.error.username = true;
           this.error.password = true;
+          alert(data.message || "Invalid credentials");
         } else {
           console.log("Login successful!", data.token);
-          // Redirect to the /profile page
-          this.$router.push("/profile");
+          // Store the token for authenticated requests
+          localStorage.setItem('token', data.token);
+          // Redirect to the /main page
+          this.$router.push("/main");
         }
       } catch (err) {
         console.error("Error during login:", err);
+        alert("An error occurred during login. Please try again.");
       }
     },
   },
@@ -152,7 +155,7 @@ html, body {
   cursor: pointer;        /* Make the icon clickable */
 }
 
-/* Auth-button styles remain unchanged */
+/* Auth-button styles */
 .auth-button {
   width: 100%;             /* Full width */
   padding: 18px;           /* Slightly larger padding */
@@ -169,7 +172,7 @@ html, body {
   background-color: darkorange;
 }
 
-/* Footer text styles remain unchanged */
+/* Footer text styles */
 .footer-text {
   margin-top: 15px;        /* Space above the footer text */
   font-size: 0.9rem;       /* Smaller font size */
@@ -185,6 +188,11 @@ html, body {
 
 .footer-text a:hover {
   text-decoration: underline; /* Underline link on hover */
+}
+
+/* Error styling */
+.input-error {
+  border: 2px solid red !important;
 }
 
 /* Responsive design for smaller screens */
@@ -206,8 +214,5 @@ html, body {
   .footer-text {
     font-size: 0.85rem;    /* Slightly smaller text size for mobile */
   }
-}
-.input-error {
-  border: 2px solid red !important;
 }
 </style>

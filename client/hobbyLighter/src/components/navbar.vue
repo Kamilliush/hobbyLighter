@@ -5,12 +5,12 @@
     </div>
     <div class="navbar-right">
       <div class="blueBg">
-        <!-- Link do strony dodawania nowego posta -->
-        <router-link to="/new" class="button-link">
+        <!-- Link to add a new post -->
+        <router-link to="/main" class="button-link">
           <i class="fas fa-plus"></i>
         </router-link>
         <div class="yellowBg">
-          <!-- Link do strony wyszukiwania -->
+          <!-- Link to search page -->
           <router-link to="/search" class="button-link">
             <i class="fa-solid fa-magnifying-glass"></i>
           </router-link>
@@ -19,9 +19,14 @@
     </div>
   </nav>
 </template>
+
 <script>
+export default {
+  name: "Navbar",
+};
 </script>
-<style>
+
+<style scoped>
 .logo {
   padding: 10px 0;
 }
@@ -33,11 +38,11 @@
   justify-content: space-between;
   width: 100%;
   height: 8vh;
-  position: fixed; /* Przykleja navbar do góry */
-  top: 0; /* Ustawia navbar na górze */
+  position: fixed; /* Fix navbar to the top */
+  top: 0; /* Position navbar at the top */
   left: 0;
-  z-index: 1000; /* Zapewnia, że navbar będzie nad innymi elementami */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Opcjonalny cień, aby odróżnić navbar od reszty treści */
+  z-index: 1000; /* Ensure navbar is above other elements */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for distinction */
 }
 
 .navbar-left {
@@ -59,7 +64,7 @@
   width: 90px;
   height: 45px;
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
 }
 
@@ -71,11 +76,11 @@
   width: 45px;
   height: 45px;
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
 }
 
-/* Stylizacja router-link, aby wyglądały jak przyciski */
+/* Style for router-link to look like buttons */
 .button-link {
   display: flex;
   align-items: center;
