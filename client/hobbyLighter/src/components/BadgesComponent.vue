@@ -16,6 +16,7 @@
       </div>
     </div>
   </div>
+  <div class="space"></div>
 </template>
 
 <script>
@@ -79,6 +80,10 @@ export default {
 
 
 <style scoped>
+.space{
+  width: 100%;
+  height: 9vh;
+}
 .badges {
   display: flex;
   flex-direction: column;
