@@ -3,6 +3,7 @@
     <h1>Events</h1>
     <div v-for="event in events" :key="event.id" class="event-card">
       <h2 class="line">{{ event.title }}</h2>
+      <img src="../assets/event.png" width="100%" alt="">
       <p class="line"><strong>Location:</strong> {{ event.location }}</p>
       <p class="line"><strong>Categories:</strong> {{ event.categories.join(', ') }}</p>
       <p class="line"><strong>Description:</strong> {{ event.description }}</p>

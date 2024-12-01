@@ -1,207 +1,43 @@
 [
   {
     "title": "Post 1",
-    "author": "Jan Kowalski",
-    "location": "City, Country",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed.",
-    "image": "https://via.placeholder.com/300",
+    "author": "Bit Festival",
+    "location": "Gliwice, Poland",
+    "content": "Hakaton 2024 wygrywa druzyna...",
+    "image": "https://gliwice24h.pl/image/gallery/articles/Dolacz-do-BIT-Festival-2024/xITfestiwal_baner1.jpg,qw=760,awp.pagespeed.ic.J3SonnJ51X.jpg",
+    "id": 1733030119666,
+    "likes": 3219,
+    "comments": [
+      {
+        "author": "Antek",
+        "text": "Na pewno JakuDev wygra"
+      },
+      {
+        "author": "HejterTomek",
+        "text": "Nie ma opcji ze wygrają"
+      },
+      {
+        "author": "KornelFsa",
+        "text": "co to za nowa apikacja?"
+      },
+      {
+        "author": "BitFest",
+        "text": "Ja jestem chętny "
+      },
+      {
+        "author": "BitFest",
+        "text": "Jestem chetny"
+      }
+    ]
+  },
+  {
+    "title": "Post 1",
+    "author": "EUVIC",
+    "location": "Post Sponsorowany",
+    "content": "Poszukujemy nowych stazystów",
+    "image": "https://www.dlatesterow.pl/wp-content/uploads/2022/01/euvic.jpg",
     "id": 1733030119666,
     "likes": 3216,
-    "comments": [
-      {
-        "author": "policeman_jack",
-        "text": "lorem srorem mujem sieem, ipsum lorem"
-      },
-      {
-        "author": "todthemod",
-        "text": "lorem ipsum lorem ipsum lorem ipsum"
-      },
-      {
-        "author": "modthefosdsa",
-        "text": "jorem ipsum ipsum psum ipsum"
-      }
-    ]
-  },
-  {
-    "title": "test",
-    "author": "test",
-    "location": "test",
-    "content": "test",
-    "image": "",
-    "id": 1733029911689,
-    "likes": 1,
-    "comments": [
-      {
-        "author": "You",
-        "text": "Fajny post, mordo"
-      },
-      {
-        "author": "You",
-        "text": "Well Done"
-      },
-      {
-        "author": "You",
-        "text": "Nice"
-      },
-      {
-        "author": "rr",
-        "text": "dsad"
-      }
-    ]
-  },
-  {
-    "title": "Hejka",
-    "location": "dsad",
-    "content": "dad",
-    "image": "",
-    "author": "rr",
-    "id": 1733031135646,
-    "likes": 0,
-    "comments": [
-      {
-        "author": "rr",
-        "text": "dd"
-      },
-      {
-        "author": "a",
-        "text": "a"
-      },
-      {
-        "author": "a",
-        "text": "das"
-      },
-      {
-        "author": "a",
-        "text": "ddd"
-      }
-    ]
-  },
-  {
-    "title": "d",
-    "location": "d",
-    "content": "d",
-    "image": "",
-    "author": "rr",
-    "id": 1733031149260,
-    "likes": 0,
-    "comments": [
-      {
-        "author": "rr",
-        "text": "Gbbb"
-      }
-    ]
-  },
-  {
-    "title": "dad",
-    "location": "dsada",
-    "content": "dsada",
-    "image": "",
-    "author": "a",
-    "id": 1733031202338,
-    "likes": 0,
-    "comments": [
-      {
-        "author": "a",
-        "text": "JA JESTEM A"
-      },
-      {
-        "author": "rr",
-        "text": "dsd"
-      }
-    ]
-  },
-  {
-    "title": "dsda",
-    "location": "dsada",
-    "content": "dasda",
-    "image": "",
-    "author": "a",
-    "id": 1733031217476,
-    "likes": 0,
-    "comments": []
-  },
-  {
-    "title": "dsa",
-    "location": "dsa",
-    "content": "dsa",
-    "image": "",
-    "author": "rr",
-    "id": 1733031518085,
-    "likes": 0,
-    "comments": [
-      {
-        "author": "rr",
-        "text": "dsda"
-      },
-      {
-        "author": "a",
-        "text": "aa"
-      }
-    ]
-  },
-  {
-    "title": "dsad",
-    "location": "dsad",
-    "content": "dsada",
-    "image": "",
-    "author": "rr",
-    "id": 1733031522953,
-    "likes": 0,
-    "comments": []
-  },
-  {
-    "title": "FAJNA?",
-    "location": "Windows",
-    "content": "PATRZCIE JAIE FAJNEPATRZCIE JAIE FAJNEPATRZCIE JAIE FAJNEPATRZCIE JAIE FAJNEPATRZCIE JAIE FAJNEPATRZCIE JAIE FAJNEPATRZCIE JAIE FAJNEPATRZCIE JAIE FAJNE",
-    "image": " https://i0.wp.com/picjumbo.com/wp-content/uploads/pure-nature-landscape-single-tree-in-green-field-free-photo.jpg?w=600&quality=80",
-    "author": "Kamilliush",
-    "id": 1733038606837,
-    "likes": 0,
-    "comments": []
-  },
-  {
-    "title": "a",
-    "location": "a",
-    "content": "a",
-    "image": "",
-    "author": "rr",
-    "id": 1733041113157,
-    "likes": 0,
-    "comments": []
-  },
-  {
-    "title": "ds",
-    "location": "ds",
-    "content": "ds",
-    "image": "",
-    "author": "rr",
-    "id": 1733041730964,
-    "likes": 4,
-    "comments": [
-      {
-        "author": "rr",
-        "text": "Gnbvv"
-      }
-    ]
-  },
-  {
-    "title": "Ghhbgg",
-    "location": "Bbbbb",
-    "content": "Ghbb",
-    "image": "",
-    "author": "rr",
-    "id": 1733042143043,
-    "likes": 0,
-    "comments": []
-  },
-  {
-    "title": "kaczka",
-    "location": "a",
-    "content": "a",
-    "image": "https://media1.giphy.com/media/04Iep0V94x01xwExNU/200w.gif?cid=6c09b952josqdzi573wq404lqyj2ie408yx6ydq82nuauoex&ep=v1_gifs_search&rid=200w.gif&ct=g",
-    "author": "rr",
-    "id": 1733042213508,
-    "likes": 0,
     "comments": []
   }
 ]

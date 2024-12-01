@@ -43,11 +43,11 @@
                 <strong>{{ comment.author }}:</strong> {{ comment.text }}
               </p>
               <button @click="toggleCommentForm(index)">
-                {{ post.showCommentForm ? "Cancel" : "Add Comment" }}
+                {{ post.showCommentForm ? "Anuluj" : "Dodaj komentarz" }}
               </button>
               <div v-if="post.showCommentForm" class="comment-form">
-                <textarea v-model="post.newCommentText" placeholder="Write a comment..." required></textarea>
-                <button @click="addComment(index)">Submit</button>
+                <textarea v-model="post.newCommentText" placeholder="napisz komentarz..." required></textarea>
+                <button @click="addComment(index)">Dodaj</button>
               </div>
             </div>
           </div>
