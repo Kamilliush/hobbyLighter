@@ -9,13 +9,15 @@ import SignUp from '@/views/SignUp.vue';
 import HobbySelection from '@/components/HobbySelection.vue';
 import MainPage from "@/components/MainPage.vue";
 
-
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      redirect: '/signin', // Redirect root to /signin
+    },
+    {
+      path: '/signin',
       name: 'SignIn',
       component: SignIn,
     },
@@ -56,11 +58,11 @@ const router = createRouter({
         },
       ],
     },
-    // Optionally, add a catch-all route for 404 Not Found
+    // Catch-all route for 404 Not Found
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      component: () => import('@/views/NotFound.vue'), // You can create a NotFound.vue component
+      component: () => import('@/views/NotFound.vue'),
     },
   ],
 });

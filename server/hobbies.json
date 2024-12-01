@@ -2,11 +2,11 @@
   "hobbies": [
     {
       "name": "Reading",
-      "count": 53
+      "count": 57
     },
     {
       "name": "Traveling",
-      "count": 44
+      "count": 54
     },
     {
       "name": "Cooking",
@@ -14,27 +14,27 @@
     },
     {
       "name": "Gardening",
-      "count": 23
+      "count": 28
     },
     {
       "name": "Photography",
-      "count": 16
+      "count": 17
     },
     {
       "name": "Music",
-      "count": 11
+      "count": 19
     },
     {
       "name": "Sports",
-      "count": 10
+      "count": 12
     },
     {
       "name": "Drawing",
-      "count": 5
+      "count": 10
     },
     {
       "name": "Writing",
-      "count": 5
+      "count": 8
     },
     {
       "name": "Gaming",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Cycling",
-      "count": 2
+      "count": 3
     },
     {
       "name": "Knitting",
@@ -58,7 +58,7 @@
     },
     {
       "name": "Woodworking",
-      "count": 1
+      "count": 2
     },
     {
       "name": "Yoga",
@@ -70,7 +70,7 @@
     },
     {
       "name": "Swimming",
-      "count": 2
+      "count": 7
     },
     {
       "name": "Running",
@@ -86,7 +86,7 @@
     },
     {
       "name": "Baking",
-      "count": 1
+      "count": 4
     },
     {
       "name": "Martial Arts",
@@ -142,7 +142,7 @@
     },
     {
       "name": "Model Building",
-      "count": 2
+      "count": 7
     },
     {
       "name": "Puzzles",
@@ -166,11 +166,11 @@
     },
     {
       "name": "Collecting Antiques",
-      "count": 2
+      "count": 5
     },
     {
       "name": "Leather Crafting",
-      "count": 4
+      "count": 9
     },
     {
       "name": "Metalworking",
@@ -190,7 +190,7 @@
     },
     {
       "name": "Quilting",
-      "count": 2
+      "count": 5
     },
     {
       "name": "Calligraphy",
@@ -206,11 +206,11 @@
     },
     {
       "name": "Surfing",
-      "count": 1
+      "count": 2
     },
     {
       "name": "Scuba Diving",
-      "count": 1
+      "count": 2
     },
     {
       "name": "Skiing",
@@ -222,7 +222,7 @@
     },
     {
       "name": "Skydiving",
-      "count": 1
+      "count": 2
     },
     {
       "name": "Archery",
@@ -238,7 +238,7 @@
     },
     {
       "name": "Horse Riding",
-      "count": 3
+      "count": 6
     },
     {
       "name": "Sailing",

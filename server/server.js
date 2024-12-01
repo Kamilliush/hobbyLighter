@@ -86,10 +86,6 @@ app.post("/api/auth/login", async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    if (!user.hobbies || user.hobbies.length < 5) {
-      return res.status(403).json({ message: "Please select your hobbies before logging in" });
-    }
-
     const token = jwt.sign({ username: user.username }, "secret", { expiresIn: "1h" });
     res.status(200).json({ message: "Login successful", token });
   } catch (err) {
@@ -130,6 +126,19 @@ app.post("/api/users/hobbies", authenticateToken, (req, res) => {
   fs.writeFileSync(hobbiesFilePath, JSON.stringify(hobbiesData, null, 2));
 
   res.status(200).json({ message: "Hobbies saved successfully" });
+});
+
+// Endpoint to get user hobbies
+app.get("/api/users/hobbies", authenticateToken, (req, res) => {
+  const username = req.user.username;
+
+  const users = readUsersFromFile();
+  const user = users.find((u) => u.username === username);
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  res.status(200).json({ hobbies: user.hobbies });
 });
 
 // Endpoint to get all hobbies

@@ -77,6 +77,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .badges {
   display: flex;

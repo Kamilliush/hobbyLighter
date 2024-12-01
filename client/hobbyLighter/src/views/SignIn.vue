@@ -70,7 +70,7 @@ export default {
         } else {
           localStorage.setItem("token", data.token);
 
-          // Pobierz hobby użytkownika
+          // Fetch user hobbies
           const userResponse = await fetch(`http://172.20.10.4:3000/api/users/hobbies`, {
             method: "GET",
             headers: {
@@ -82,7 +82,7 @@ export default {
             localStorage.setItem("userHobbies", JSON.stringify(userData.hobbies));
           }
 
-          // Przekierowanie do strony głównej
+          // Redirect to main page
           this.$router.push("/main");
         }
       } catch (err) {
@@ -93,16 +93,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* Global styles for html and body */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center; /* Center container horizontally */
-  align-items: center;     /* Center container vertically */
+  align-items: center; /* Center container vertically */
   background-color: #ffffff; /* Set the background to white */
   font-family: Arial, sans-serif; /* Optional: Set a default font */
 }
@@ -110,8 +111,8 @@ html, body {
 /* Flex container to center the form */
 .container {
   display: flex;
-  flex-direction: column;  /* Stack children vertically */
-  align-items: center;     /* Center horizontally */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center horizontally */
   justify-content: center; /* Center vertically */
   width: 100%;
   height: 100%;
@@ -121,18 +122,18 @@ html, body {
 
 /* Logo style */
 .logo {
-  width: 180px;            /* Slightly larger logo size */
-  margin-bottom: 30px;     /* Add more space below logo */
+  width: 180px; /* Slightly larger logo size */
+  margin-bottom: 30px; /* Add more space below logo */
 }
 
 /* Auth-form styles */
 .auth-form {
-  width: 90%;              /* Full width with responsive sizing */
-  max-width: 450px;        /* Slightly larger maximum width */
+  width: 90%; /* Full width with responsive sizing */
+  max-width: 450px; /* Slightly larger maximum width */
   margin-top: 20px;
   display: flex;
-  flex-direction: column;  /* Stack inputs and button vertically */
-  gap: 20px;               /* Add more space between form elements */
+  flex-direction: column; /* Stack inputs and button vertically */
+  gap: 20px; /* Add more space between form elements */
 }
 
 /* Input group to wrap input field and icon */
@@ -142,35 +143,35 @@ html, body {
 }
 
 .input-field {
-  width: 100%;             /* Full width of form */
-  padding: 18px;           /* Slightly larger padding */
-  padding-right: 45px;     /* Add space for icon on the right */
-  font-size: 1.3rem;       /* Slightly larger font size */
+  width: 100%; /* Full width of form */
+  padding: 18px; /* Slightly larger padding */
+  padding-right: 45px; /* Add space for icon on the right */
+  font-size: 1.3rem; /* Slightly larger font size */
   border: 1.5px solid #ccc; /* Slightly thicker border */
-  border-radius: 8px;      /* More rounded input fields */
-  box-sizing: border-box;  /* Include padding in width */
+  border-radius: 8px; /* More rounded input fields */
+  box-sizing: border-box; /* Include padding in width */
 }
 
 .input-icon {
   position: absolute;
   top: 50%;
-  right: 15px;            /* Position icon on the right */
+  right: 15px; /* Position icon on the right */
   transform: translateY(-50%);
   color: #aaa;
   font-size: 1.2rem;
-  cursor: pointer;        /* Make the icon clickable */
+  cursor: pointer; /* Make the icon clickable */
 }
 
 /* Auth-button styles */
 .auth-button {
-  width: 100%;             /* Full width */
-  padding: 18px;           /* Slightly larger padding */
-  font-size: 1.3rem;       /* Slightly larger button font */
+  width: 100%; /* Full width */
+  padding: 18px; /* Slightly larger padding */
+  font-size: 1.3rem; /* Slightly larger button font */
   font-weight: bold;
   background-color: orange;
   color: white;
   border: none;
-  border-radius: 8px;      /* More rounded corners */
+  border-radius: 8px; /* More rounded corners */
   cursor: pointer;
 }
 
@@ -180,15 +181,15 @@ html, body {
 
 /* Footer text styles */
 .footer-text {
-  margin-top: 15px;        /* Space above the footer text */
-  font-size: 0.9rem;       /* Smaller font size */
-  font-weight: 300;        /* Light font weight for thinner text */
-  color: black;            /* Text color as black */
+  margin-top: 15px; /* Space above the footer text */
+  font-size: 0.9rem; /* Smaller font size */
+  font-weight: 300; /* Light font weight for thinner text */
+  color: black; /* Text color as black */
 }
 
 .footer-text a {
   margin-left: 120px;
-  color: black;            /* Link color */
+  color: black; /* Link color */
   text-decoration: none;
 }
 
@@ -204,21 +205,21 @@ html, body {
 /* Responsive design for smaller screens */
 @media screen and (max-width: 768px) {
   .logo {
-    width: 150px;          /* Adjust logo size for smaller screens */
+    width: 150px; /* Adjust logo size for smaller screens */
   }
 
   .input-field {
-    font-size: 1.2rem;     /* Adjust font size for inputs */
-    padding: 16px;         /* Adjust padding for inputs */
+    font-size: 1.2rem; /* Adjust font size for inputs */
+    padding: 16px; /* Adjust padding for inputs */
   }
 
   .auth-button {
-    font-size: 1.2rem;     /* Adjust button font size */
-    padding: 16px;         /* Adjust padding for button */
+    font-size: 1.2rem; /* Adjust button font size */
+    padding: 16px; /* Adjust padding for button */
   }
 
   .footer-text {
-    font-size: 0.85rem;    /* Slightly smaller text size for mobile */
+    font-size: 0.85rem; /* Slightly smaller text size for mobile */
   }
 }
 </style>
