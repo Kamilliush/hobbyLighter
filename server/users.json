@@ -18,5 +18,31 @@
     "password": "$2a$10$DqGZOJMVMCHhL62xKX/Qu.N1/Apu1Mcb0Kt.U.mhmd0zDovIBAKba",
     "hobbies": [],
     "events": []
+  },
+  {
+    "username": "Kamilliush",
+    "email": "kamilliush@gmail.com",
+    "password": "$2a$10$vAJY6a0puPvOQethkPN01OVoJeVZUPaxAIQR7uISRobED5oC5EZZq",
+    "hobbies": [
+      "Gardening",
+      "Drawing",
+      "Swimming",
+      "Music",
+      "Horse Riding"
+    ],
+    "events": []
+  },
+  {
+    "username": "rr",
+    "email": "rr@rr.pl",
+    "password": "$2a$10$r63UHsQQCBeCJMkW/1jnSurVO/ZQuRJtooRVfadH3J7T2jk7Idrzy",
+    "hobbies": [
+      "Cooking",
+      "Sports",
+      "Swimming",
+      "Horse Riding",
+      "Collecting Antiques"
+    ],
+    "events": []
   }
 ]

@@ -1,21 +1,23 @@
 <template>
   <div class="main-page">
-    <Navbar />
+    <Navbar @toggle-form="toggleForm" />
+
 
     <div class="main-content">
       <div class="space"></div>
 
       <div class="posts">
-        <h2>Your Posts</h2>
 
         <!-- Form for Adding New Post -->
-        <form @submit.prevent="addPost" class="post-form">
-          <input v-model="newPost.title" type="text" placeholder="Title" required />
-          <textarea v-model="newPost.content" placeholder="Description" required></textarea>
-          <input v-model="newPost.location" type="text" placeholder="Location" required />
-          <input v-model="newPost.image" type="url" placeholder="Image URL" />
-          <button type="submit">Add Post</button>
-        </form>
+        <!-- Form for Adding New Post -->
+<form v-if="showForm" @submit.prevent="addPost" class="post-form">
+  <input v-model="newPost.title" type="text" placeholder="Title" required />
+  <textarea v-model="newPost.content" placeholder="Description" required></textarea>
+  <input v-model="newPost.location" type="text" placeholder="Location" required />
+  <input v-model="newPost.image" type="url" placeholder="Image URL" />
+  <button type="submit">Add Post</button>
+</form>
+
 
         <!-- Post List -->
         <div class="post-list">
@@ -55,6 +57,8 @@
 
     <Navigation />
   </div>
+
+  <div class="space"></div>
 </template>
 
 <script>
@@ -70,20 +74,24 @@ export default {
     Navigation,
   },
   data() {
-    return {
-      posts: [],
-      newPost: {
-        title: "",
-        location: "",
-        content: "",
-        image: "",
-      },
-    };
-  },
+  return {
+    posts: [],
+    newPost: {
+      title: "",
+      location: "",
+      content: "",
+      image: "",
+    },
+    showForm: false, // Domyślnie formularz ukryty
+  };
+},
   methods: {
+    toggleForm() {
+    this.showForm = !this.showForm; 
+  },
     async fetchPosts() {
       try {
-        const response = await axios.get("http://localhost:3000/api/posts");
+        const response = await axios.get("http://172.20.10.2:3000/api/posts");
         this.posts = response.data;
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -93,7 +101,7 @@ export default {
       const userStore = useUserStore(); // Get current user
       try {
         const newPost = { ...this.newPost, author: userStore.username }; // Add author's username
-        const response = await axios.post("http://localhost:3000/api/posts", newPost);
+        const response = await axios.post("http://172.20.10.2:3000/api/posts", newPost);
         this.posts.push(response.data);
         this.newPost = { title: "", location: "", content: "", image: "" };
       } catch (error) {
@@ -102,7 +110,7 @@ export default {
     },
     async likePost(post) {
       try {
-        await axios.patch(`http://localhost:3000/api/posts/${post.id}/like`);
+        await axios.patch(`http://172.20.10.2:3000/api/posts/${post.id}/like`);
         post.likes++;
       } catch (error) {
         console.error("Error liking post:", error);
@@ -111,7 +119,7 @@ export default {
     async dislikePost(post) {
       try {
         if (post.likes > 0) {
-          await axios.patch(`http://localhost:3000/api/posts/${post.id}/dislike`);
+          await axios.patch(`http://172.20.10.2:3000/api/posts/${post.id}/dislike`);
           post.likes--;
         }
       } catch (error) {
@@ -126,7 +134,7 @@ export default {
       const post = this.posts[index];
       if (post.newCommentText.trim()) {
         try {
-          const response = await axios.post(`http://localhost:3000/api/posts/${post.id}/comments`, {
+          const response = await axios.post(`http://172.20.10.2:3000/api/posts/${post.id}/comments`, {
             author: userStore.username, // Use logged-in user's username
             text: post.newCommentText,
           });
@@ -146,6 +154,11 @@ export default {
 </script>
 
 <style scoped>
+
+.space{
+  width: 100%;
+  height: 9vh;
+}
 .main-page {
   display: flex;
   flex-direction: column;
