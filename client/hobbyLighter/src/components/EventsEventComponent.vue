@@ -53,13 +53,33 @@ export default {
           maxParticipants: 50,
         },
       ],
-      userName: "Your Name", // Default user name
+      userName: localStorage.getItem("username") || "Your Name", // Fetch username from local storage
     };
   },
   methods: {
-    joinEvent(event) {
+    async joinEvent(event) {
       if (!this.isJoined(event) && event.participants.length < event.maxParticipants) {
-        event.participants.push(this.userName);
+        try {
+          const token = localStorage.getItem("token");
+          const response = await fetch("http://172.20.10.4:3000/api/events/join", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ eventId: event.id }),
+          });
+
+          if (response.ok) {
+            event.participants.push(this.userName); // Update UI locally
+            console.log("Event joined successfully!");
+          } else {
+            const errorData = await response.json();
+            console.error("Error joining event:", errorData.message);
+          }
+        } catch (error) {
+          console.error("Error joining event:", error);
+        }
       }
     },
     isJoined(event) {

@@ -56,7 +56,7 @@ app.post("/api/auth/register", async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = { username, email, password: hashedPassword, hobbies: [] };
+    const newUser = { username, email, password: hashedPassword, hobbies: [] , events: []};
     users.push(newUser);
     writeUsersToFile(users);
 
@@ -180,6 +180,45 @@ app.get("/api/search", (req, res) => {
     res.status(500).json({ message: "Error fetching hobbies" });
   }
 });
+
+app.post("/api/events/join", authenticateToken, (req, res) => {
+  const { eventId } = req.body;
+  const username = req.user.username;
+
+  if (!eventId) {
+    return res.status(400).json({ message: "Event ID is required" });
+  }
+
+  const users = readUsersFromFile();
+  const user = users.find((u) => u.username === username);
+
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  if (!user.events.includes(eventId)) {
+    user.events.push(eventId); // Add the event ID to the user's profile
+    writeUsersToFile(users); // Save changes
+    return res.status(200).json({ message: "Successfully joined the event." });
+  }
+
+  return res.status(400).json({ message: "User has already joined this event." });
+});
+
+
+app.get("/api/users/events", authenticateToken, (req, res) => {
+  const username = req.user.username;
+
+  const users = readUsersFromFile();
+  const user = users.find((u) => u.username === username);
+
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  res.json({ events: user.events });
+});
+
 
 
 // Start the server

@@ -1,14 +1,14 @@
 <template>
   <div class="profile">
     <div class="top_container">
-      <img class="logo" />
+      <img class="logo" src="../../assets/kaczuszka_momo.jpg" />
       <p class="username">{{ username }}</p>
       <div class="badges">
-        <img class="badge" />
-        <img class="badge" />
-        <img class="badge" />
-        <img class="badge" />
-        <img class="badge" />
+        <img class="badge" src="../../assets/bit_duck.jpg" />
+        <img class="badge" src="../../assets/bit_duck.jpg" />
+        <img class="badge" src="../../assets/bit_duck.jpg" />
+        <img class="badge" src="../../assets/bit_duck.jpg" />
+        <img class="badge" src="../../assets/bit_duck.jpg" />
         <button class="more_badges_btn"> ... </button>
       </div>
     </div>

@@ -18,9 +18,9 @@ export default {
     return {
       currentRoute: this.$route.path, // Initialize with the current path
       menuItems: [
-        { name: "Calendar", route: "/events", icon: "fa-solid fa-calendar fa-2x" },
+        { name: "Calendar", route: "/events/event", icon: "fa-solid fa-calendar fa-2x" },
         { name: "Home", route: "/main", icon: "fa-solid fa-house fa-2x" },
-        { name: "Profile", route: "/profile", icon: "fa-solid fa-user fa-2x" },
+        { name: "Profile", route: "/profile/posts", icon: "fa-solid fa-user fa-2x" },
       ],
     };
   },

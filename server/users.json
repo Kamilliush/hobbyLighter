@@ -1,98 +1,22 @@
 [
   {
-    "username": "a",
-    "email": "a@b.c",
-    "password": "$2a$10$Vq2XNh.Xcd3wWD3M/CFgDu80qcdyj2URd0iCPrEFxsSWTEuXFuN5C",
-    "hobbies": [
-      "Gardening",
-      "Reading",
-      "Drawing",
-      "Horse Riding",
-      "Model Building"
-    ]
-  },
-  {
-    "username": "t",
-    "email": "t@c.gf",
-    "password": "$2a$10$IExmmF5CIRV9y04a.pnqselQY903BLUrcR7Lehd5yYZWTwWvnRhgi",
-    "hobbies": [
-      "Reading",
-      "Traveling",
-      "Music",
-      "Swimming",
-      "Writing"
-    ]
-  },
-  {
-    "username": "hhh",
-    "email": "hhh@gmail.com",
-    "password": "$2a$10$Jusa/82kKsbowhaL7vtHxeGsaSBgTJN5dsbBWb2T5TPgpFzjmQbeW",
-    "hobbies": [
-      "Music",
-      "Leather Crafting",
-      "Drawing",
-      "Gardening",
-      "Baking"
-    ]
-  },
-  {
-    "username": "tt",
-    "email": "t@g.c",
-    "password": "$2a$10$K8ZLnBhOXg0o7ElkIypY5utzCht71/A1RMN92u5ejWtke9VJGvuDS",
-    "hobbies": [
-      "Writing",
-      "Leather Crafting",
-      "Quilting",
-      "Traveling",
-      "Model Building"
-    ]
-  },
-  {
-    "username": "rr",
-    "email": "rr@r.c",
-    "password": "$2a$10$iFG56XHDSLP2mPQ12LYUHOErYgkLeIse.3Ph4uWYVDmFuyKJrMsn2",
-    "hobbies": [
-      "Drawing",
-      "Music",
-      "Woodworking",
-      "Traveling",
-      "Skydiving"
-    ]
-  },
-  {
-    "username": "kamil",
-    "email": "kamil@gmail.com",
-    "password": "$2a$10$xgyQcIav6FTzNkQSvi.kQegBdVPTuzZ0Fox7n8ygKqDOrUaDpeSam",
-    "hobbies": [
-      "Traveling",
-      "Gardening",
-      "Drawing",
-      "Scuba Diving",
-      "Model Building"
-    ]
-  },
-  {
-    "username": "jakut",
-    "email": "jakutdev@c.c",
-    "password": "$2a$10$hm/x/MHJNKtaVJpulohccOQ/l.gb/VIxlVeQ0BOGCCmiA626j4qj2",
-    "hobbies": [
-      "Drawing",
-      "Quilting",
-      "Stand-up Comedy",
-      "Music",
-      "Traveling"
-    ]
-  },
-  {
     "username": "Angelika",
     "email": "angelika@gmail.com",
-    "password": "$2a$10$OemX8q0wm5rh.ilIxgvQ9O6HVOVjM7naACsAirr0bBGZRuFkxKuFG",
+    "password": "$2a$10$X8qpf3R5aMcRmv5RSImLk.WSBFUKQSw9/vpwJ8cWq.vM50HIQNQ8m",
     "hobbies": [
-      "Horse Riding",
-      "Photography",
-      "Drawing",
-      "Bird Watching",
-      "Model Building"
-    ]
+      "Reading",
+      "Writing",
+      "Music",
+      "Collecting Antiques",
+      "Cooking"
+    ],
+    "events": []
+  },
+  {
+    "username": "Jarek",
+    "email": "j@s.c",
+    "password": "$2a$10$DqGZOJMVMCHhL62xKX/Qu.N1/Apu1Mcb0Kt.U.mhmd0zDovIBAKba",
+    "hobbies": [],
+    "events": []
   }
 ]
