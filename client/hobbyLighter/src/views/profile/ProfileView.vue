@@ -25,6 +25,9 @@
       </RouterLink>
     </nav>
     <RouterView />
+
+    <!-- Add Navigation Component -->
+    <Navigation />
   </div>
 </template>
 
@@ -32,17 +35,19 @@
 import { defineComponent } from "vue";
 import { useUserStore } from '@/stores/user';
 import RadarChart from "@components/PentagonChart.vue";
-import Badges from "@components/BadgesComponent.vue"; 
+import Badges from "@components/BadgesComponent.vue";
 import Events from "@components/ProfileEventsComponent.vue";
 import Posts from "@components/ProfilePostsComponent.vue";
+import Navigation from "@/components/Navigation.vue"; // Import the navigation component
 
 export default defineComponent({
   name: "ProfileView",
   components: {
     RadarChart,
-    Badges,  
+    Badges,
     Events,
     Posts,
+    Navigation, // Register the navigation component
   },
   setup() {
     const userStore = useUserStore();
@@ -52,6 +57,7 @@ export default defineComponent({
   },
 });
 </script>
+
 
 <style scoped>
 .profile {
