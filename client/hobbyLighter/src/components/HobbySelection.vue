@@ -1,50 +1,65 @@
 <template>
-  <div class="search-container">
-    <div class="input-container">
-      <!-- Pole wyszukiwania -->
-      <input
-        v-model="searchQuery"
-        @input="searchHobbies"
-        placeholder="Type to search hobbies..."
-        class="search-input"
-      />
-      <!-- Przycisk powrotu -->
-      <button @click="goBack" class="back-button">Back</button>
-    </div>
-    <!-- Lista sugestii -->
-    <ul v-if="suggestions.length > 0" class="search-results">
-      <li
-        v-for="(item, index) in suggestions"
-        :key="index"
-        @click="selectSuggestion(item)"
-        class="search-item"
+  <div class="hobby-selection-container">
+    <div class="popup">
+      <h2>What's your vibe today and your passion tomorrow? Share your hobbies with us!</h2>
+      <div class="hobby-input-container">
+        <input
+          type="text"
+          v-model="searchQuery"
+          @input="searchHobbies"
+          placeholder="Type to search hobbies..."
+          class="input-field"
+        />
+        <ul v-if="suggestions.length > 0" class="suggestions-list">
+          <li
+            v-for="(hobby, index) in suggestions"
+            :key="index"
+            @click="addHobby(hobby)"
+          >
+            {{ hobby }}
+          </li>
+        </ul>
+      </div>
+      <div class="selected-hobbies">
+        <p>Selected Hobbies ({{ selectedHobbies.length }}/5):</p>
+        <div class="hobbies-list">
+          <span v-for="(hobby, index) in selectedHobbies" :key="index" class="hobby-item">
+            {{ hobby }}
+            <button @click="removeHobby(index)">x</button>
+          </span>
+        </div>
+      </div>
+      <button
+        :disabled="selectedHobbies.length < 5"
+        @click="submitHobbies"
+        class="auth-button"
       >
-        <span class="hashtag">#</span> {{ item }}
-      </li>
-    </ul>
+        Submit
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "SearchBar",
+  name: "HobbySelection",
   data() {
     return {
-      searchQuery: "", // Zapytanie wyszukiwania
-      suggestions: [], // Lista filtrowanych sugestii
-      allHobbies: [], // Wszystkie hobby z serwera
+      searchQuery: "",
+      suggestions: [],
+      selectedHobbies: [],
+      allHobbies: [],
     };
   },
   mounted() {
-    // Pobierz wszystkie hobby, gdy komponent zostanie zamontowany
     this.fetchAllHobbies();
   },
   methods: {
     async fetchAllHobbies() {
       try {
-        const response = await fetch("http://localhost:3000/api/hobbies"); // Zmień na odpowiedni URL
+        const response = await fetch("http://172.20.10.2:3000/api/hobbies");
         const data = await response.json();
-        this.allHobbies = data.hobbies; // Przypisz hobby z odpowiedzi serwera
+        this.allHobbies = data.hobbies;
       } catch (error) {
         console.error("Error fetching hobbies:", error);
       }
@@ -52,85 +67,149 @@ export default {
     searchHobbies() {
       const query = this.searchQuery.toLowerCase();
       if (query.length > 0) {
-        // Filtruj hobby na podstawie zapytania
         this.suggestions = this.allHobbies
-          .filter((hobby) => hobby.toLowerCase().includes(query))
-          .slice(0, 5); // Wyświetl maksymalnie 5 wyników
+          .filter(
+            (hobby) =>
+              hobby.toLowerCase().includes(query) &&
+              !this.selectedHobbies.includes(hobby)
+          )
+          .slice(0, 5);
       } else {
-        this.suggestions = []; // Wyczyść sugestie, jeśli zapytanie jest puste
+        this.suggestions = [];
       }
     },
-    selectSuggestion(hobby) {
-      this.searchQuery = hobby; // Ustaw wybrane hobby w polu wyszukiwania
-      this.$emit("hobby-selected", hobby); // Emituj wybrane hobby do rodzica
+    addHobby(hobby) {
+      if (this.selectedHobbies.length < 5 && !this.selectedHobbies.includes(hobby)) {
+        this.selectedHobbies.push(hobby);
+      }
+      this.searchQuery = "";
+      this.suggestions = [];
     },
-    goBack() {
-      this.$router.push("/main"); // Przejdź do strony głównej
+    removeHobby(index) {
+      this.selectedHobbies.splice(index, 1);
+    },
+    async submitHobbies() {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://172.20.10.2:3000/api/users/hobbies", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ hobbies: this.selectedHobbies }),
+        });
+        if (response.ok) {
+          alert("Hobbies saved successfully!");
+          this.$router.push("/signin");
+        } else {
+          const errorData = await response.json();
+          console.error("Error saving hobbies:", errorData.message);
+        }
+      } catch (error) {
+        console.error("Error submitting hobbies:", error);
+      }
     },
   },
 };
 </script>
 
 <style scoped>
-.search-container {
+.hobby-selection-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  background-color: #f5f5f5;
+  justify-content: center;
+  align-items: center;
 }
 
-.input-container {
+.popup {
+  background-color: white;
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.hobby-input-container {
+  position: relative;
+}
+
+.input-field {
+  width: 100%;
+  padding: 18px;
+  font-size: 1.3rem;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.suggestions-list {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestions-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.selected-hobbies {
+  margin-top: 20px;
+}
+
+.hobbies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hobby-item {
+  background-color: #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
-  gap: 10px; /* Odstęp między inputem a przyciskiem */
 }
 
-.search-input {
-  flex: 1; /* Input zajmuje pozostałą przestrzeń */
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.hobby-item button {
+  background: none;
+  border: none;
+  margin-left: 5px;
+  cursor: pointer;
 }
 
-.back-button {
-  padding: 10px 15px;
-  font-size: 1rem;
+.auth-button {
+  margin-top: 20px;
+  padding: 18px;
+  width: 100%;
+  font-size: 1.3rem;
   font-weight: bold;
   background-color: orange;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
-.back-button:hover {
-  background-color: darkorange;
-}
-
-.search-results {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  margin-top: 10px; /* Odstęp od inputa */
-}
-
-.search-item {
-  display: flex;
-  align-items: center;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
-}
-
-.search-item:hover {
-  background-color: #e0e0e0;
-}
-
-.hashtag {
-  color: orange;
-  margin-right: 5px;
+.auth-button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
 }
 </style>
