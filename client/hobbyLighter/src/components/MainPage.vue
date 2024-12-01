@@ -1,9 +1,7 @@
 <template>
   <div class="main-page">
-    <!-- Navbar at the Top -->
     <Navbar />
 
-    <!-- Main Content -->
     <div class="main-content">
       <div class="space"></div>
 
@@ -23,10 +21,7 @@
         <!-- Post List -->
         <div class="post-list">
           <div class="post-item" v-for="(post, index) in posts" :key="index">
-            <!-- Post Image -->
             <img v-if="post.image" :src="post.image" alt="Post Image" class="post-image" />
-
-            <!-- Profile and User Info -->
             <div class="post-header">
               <div class="profile-image"></div>
               <div class="user-info">
@@ -34,23 +29,14 @@
                 <p class="location">{{ post.location }}</p>
               </div>
               <div class="post-controls">
-                <button @click="likePost(index)">
-                  ↑
-                </button>
+                <button @click="likePost(post)">↑</button>
                 <span class="likes">{{ post.likes }}</span>
-                <button @click="dislikePost(index)">
-                  ↓
-                </button>
-                <button class="hashtag-button">#</button>
+                <button @click="dislikePost(post)">↓</button>
               </div>
             </div>
-
-            <!-- Post Description -->
             <div class="post-content">
               <p class="post-description">{{ post.content }}</p>
             </div>
-
-            <!-- Comments -->
             <div class="comments">
               <p v-for="(comment, idx) in post.comments.slice(0, 3)" :key="idx">
                 <strong>{{ comment.author }}:</strong> {{ comment.text }}
@@ -66,18 +52,16 @@
           </div>
         </div>
       </div>
-
-      <div class="space"></div>
     </div>
 
-    <!-- Navigation at the Bottom -->
     <Navigation />
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'; // Ensure correct casing
-import Navigation from '@/components/Navigation.vue'; // Ensure correct casing
+import Navbar from "@/components/Navbar.vue";
+import Navigation from "@/components/Navigation.vue";
+import axios from "axios";
 
 export default {
   name: "MainPage",
@@ -87,24 +71,7 @@ export default {
   },
   data() {
     return {
-      posts: [
-        {
-          title: "Post 1",
-          author: "Jan Kowalski",
-          location: "City, Country",
-          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed.",
-          image: "https://via.placeholder.com/300",
-          likes: 3213,
-          comments: [
-            { author: "policeman_jack", text: "lorem srorem mujem sieem, ipsum lorem" },
-            { author: "todthemod", text: "lorem ipsum lorem ipsum lorem ipsum" },
-            { author: "modthefosdsa", text: "jorem ipsum ipsum psum ipsum" },
-          ],
-          showCommentForm: false,
-          newCommentText: "",
-        },
-        // Add more initial posts as needed
-      ],
+      posts: [],
       newPost: {
         title: "",
         author: "",
@@ -115,39 +82,67 @@ export default {
     };
   },
   methods: {
-    addPost() {
-      const newPost = {
-        ...this.newPost,
-        likes: 0,
-        comments: [],
-        showCommentForm: false,
-        newCommentText: "",
-      };
-      this.posts.push(newPost);
-      this.newPost = { title: "", author: "", location: "", content: "", image: "" };
+    async fetchPosts() {
+      try {
+        const response = await axios.get("http://localhost:3000/api/posts");
+        this.posts = response.data;
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
     },
-    likePost(index) {
-      this.posts[index].likes++;
+    async addPost() {
+      try {
+        const response = await axios.post("http://localhost:3000/api/posts", this.newPost);
+        this.posts.push(response.data);
+        this.newPost = { title: "", author: "", location: "", content: "", image: "" };
+      } catch (error) {
+        console.error("Error adding post:", error);
+      }
     },
-    dislikePost(index) {
-      if (this.posts[index].likes > 0) {
-        this.posts[index].likes--;
+    async likePost(post) {
+      try {
+        await axios.patch(`http://localhost:3000/api/posts/${post.id}/like`);
+        post.likes++;
+      } catch (error) {
+        console.error("Error liking post:", error);
+      }
+    },
+    async dislikePost(post) {
+      try {
+        if (post.likes > 0) {
+          await axios.patch(`http://localhost:3000/api/posts/${post.id}/dislike`);
+          post.likes--;
+        }
+      } catch (error) {
+        console.error("Error disliking post:", error);
       }
     },
     toggleCommentForm(index) {
       this.posts[index].showCommentForm = !this.posts[index].showCommentForm;
     },
-    addComment(postIndex) {
-      const post = this.posts[postIndex];
+    async addComment(index) {
+      const post = this.posts[index];
       if (post.newCommentText.trim()) {
-        post.comments.push({ author: "You", text: post.newCommentText });
-        post.newCommentText = ""; // Clear the comment input
-        post.showCommentForm = false; // Hide the comment form
+        try {
+          const response = await axios.post(`http://localhost:3000/api/posts/${post.id}/comments`, {
+            author: "You",
+            text: post.newCommentText,
+          });
+          post.comments.push(response.data);
+          post.newCommentText = "";
+          post.showCommentForm = false;
+        } catch (error) {
+          console.error("Error adding comment:", error);
+        }
       }
     },
   },
+  mounted() {
+    this.fetchPosts();
+  },
 };
 </script>
+
 
 <style scoped>
 .main-page {

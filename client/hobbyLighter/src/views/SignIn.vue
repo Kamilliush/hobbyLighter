@@ -59,7 +59,7 @@ export default {
       }
 
       try {
-        const response = await fetch(`http://172.20.10.4:3000/api/auth/login`, {
+        const response = await fetch(`http://172.20.10.2:3000/api/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, password }),
@@ -77,7 +77,7 @@ export default {
           userStore.setUsername(username);
 
           // Fetch user hobbies
-          const userResponse = await fetch(`http://172.20.10.4:3000/api/users/hobbies`, {
+          const userResponse = await fetch(`http://172.20.10.2:3000/api/users/hobbies`, {
             method: "GET",
             headers: {
               Authorization: `Bearer ${data.token}`,

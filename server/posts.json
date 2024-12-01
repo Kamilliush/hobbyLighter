@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Post 1",
+    "author": "Jan Kowalski",
+    "location": "City, Country",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed.",
+    "image": "https://via.placeholder.com/300",
+    "likes": 3213,
+    "comments": [
+      {
+        "author": "policeman_jack",
+        "text": "lorem srorem mujem sieem, ipsum lorem"
+      },
+      {
+        "author": "todthemod",
+        "text": "lorem ipsum lorem ipsum lorem ipsum"
+      },
+      {
+        "author": "modthefosdsa",
+        "text": "jorem ipsum ipsum psum ipsum"
+      }
+    ]
+  },
+  {
+    "title": "s",
+    "author": "s",
+    "location": "s",
+    "content": "s",
+    "image": "",
+    "id": 1733029911689,
+    "likes": 0,
+    "comments": []
+  }
+]
