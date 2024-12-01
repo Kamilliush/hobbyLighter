@@ -6,13 +6,18 @@ import ProfileEventsComponent from '@/components/ProfileEventsComponent.vue';
 import ProfilePostsComponent from '@/components/ProfilePostsComponent.vue';
 import SignIn from '@/views/SignIn.vue';
 import SignUp from '@/views/SignUp.vue';
-import HobbySelection from '@/components/HobbySelection.vue'; // Import the new component
+import HobbySelection from '@/components/HobbySelection.vue';
+import MainPage from "@/components/MainPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      redirect: '/signin', // Redirect root to /signin
+    },
+    {
+      path: '/signin',
       name: 'SignIn',
       component: SignIn,
     },
@@ -27,23 +32,37 @@ const router = createRouter({
       component: HobbySelection,
     },
     {
+      path: '/main',
+      name: 'MainPage',
+      component: MainPage,
+    },
+    {
       path: '/profile',
-      name: 'profile',
+      name: 'ProfileView',
       component: ProfileView,
       children: [
         {
           path: 'badges',
+          name: 'Badges',
           component: BadgesComponent,
         },
         {
           path: 'events',
+          name: 'ProfileEvents',
           component: ProfileEventsComponent,
         },
         {
           path: 'posts',
+          name: 'ProfilePosts',
           component: ProfilePostsComponent,
         },
       ],
+    },
+    // Catch-all route for 404 Not Found
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('@/views/NotFound.vue'),
     },
   ],
 });

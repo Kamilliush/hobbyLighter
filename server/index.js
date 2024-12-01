@@ -21,5 +21,5 @@ app.post('/check-code', (req, res) => {
 // Uruchomienie serwera
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Serwer działa na http://localhost:${PORT}`);
+  console.log(`Serwer działa na http://172.20.10.4:${PORT}`);
 });

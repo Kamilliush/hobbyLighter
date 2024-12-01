@@ -1,62 +1,74 @@
 [
   {
-    "username": "bartek",
-    "password": "$2a$10$kWMMR35jg4uxPtxuvh2nfetckKurlZ2yhi3HQwqxNtiCbviNrufPi",
-    "hobbies": []
+    "username": "a",
+    "email": "a@b.c",
+    "password": "$2a$10$Vq2XNh.Xcd3wWD3M/CFgDu80qcdyj2URd0iCPrEFxsSWTEuXFuN5C",
+    "hobbies": [
+      "Gardening",
+      "Reading",
+      "Drawing",
+      "Horse Riding",
+      "Model Building"
+    ]
   },
   {
-    "username": "heher",
-    "password": "$2a$10$x7Tz5sXcgizIbmtvc1qC4Oi3HsfLqLzwLA1EGbiaLQ/om9SXn2k6W",
-    "hobbies": []
+    "username": "t",
+    "email": "t@c.gf",
+    "password": "$2a$10$IExmmF5CIRV9y04a.pnqselQY903BLUrcR7Lehd5yYZWTwWvnRhgi",
+    "hobbies": [
+      "Reading",
+      "Traveling",
+      "Music",
+      "Swimming",
+      "Writing"
+    ]
   },
   {
-    "username": "Bartek",
-    "password": "$2a$10$SFOdLndAhQVEIxQ/9oXK9.eMQg1jzYiOSeBgOkON0z99X.rgEhI8a",
-    "hobbies": []
+    "username": "hhh",
+    "email": "hhh@gmail.com",
+    "password": "$2a$10$Jusa/82kKsbowhaL7vtHxeGsaSBgTJN5dsbBWb2T5TPgpFzjmQbeW",
+    "hobbies": [
+      "Music",
+      "Leather Crafting",
+      "Drawing",
+      "Gardening",
+      "Baking"
+    ]
   },
   {
-    "username": "yoooo",
-    "password": "$2a$10$jXRRUfIRDHo60WF.rvoLUu/HsxyjA8DQCgupN/mEKkLDrX1dh4T4S",
-    "hobbies": []
+    "username": "tt",
+    "email": "t@g.c",
+    "password": "$2a$10$K8ZLnBhOXg0o7ElkIypY5utzCht71/A1RMN92u5ejWtke9VJGvuDS",
+    "hobbies": [
+      "Writing",
+      "Leather Crafting",
+      "Quilting",
+      "Traveling",
+      "Model Building"
+    ]
   },
   {
-    "username": "Jola",
-    "password": "$2a$10$sKK4IlH6kumeoR2XK.fQ8Owhzb37dOceoLpFUJd5T5fDage/nU/62",
-    "hobbies": []
-  },
-  {
-    "username": "AsiaSkibidi",
-    "password": "$2a$10$Xp.lvk4ZRbF/8bsMIDmsC.u58s4aAHnCBMMlzDtm.8xKhm/4E.VtS",
-    "hobbies": []
-  },
-  {
-    "username": "bart",
-    "email": "bart@gmail.com",
-    "password": "$2a$10$WnBSkNmSeHwJ3SS9fFaRqevvCkDdkpMTS7wUqVB6fhwkYUr/vv2Qy",
-    "hobbies": []
-  },
-  {
-    "username": "bartttt",
-    "email": "bart@gmail.com",
-    "password": "$2a$10$asQLZEmB92w3OXiCTGMIMOOcmPcGUWhfHgx5lU/CIF7psnQexwtf2",
-    "hobbies": []
+    "username": "rr",
+    "email": "rr@r.c",
+    "password": "$2a$10$iFG56XHDSLP2mPQ12LYUHOErYgkLeIse.3Ph4uWYVDmFuyKJrMsn2",
+    "hobbies": [
+      "Drawing",
+      "Music",
+      "Woodworking",
+      "Traveling",
+      "Skydiving"
+    ]
   },
   {
     "username": "kamil",
     "email": "kamil@gmail.com",
-    "password": "$2a$10$XB96U4bhPxeG3GW1Sxlsy.If5A7KdBNlW2cmNZTZoG2jm1Q3x6JTK",
+    "password": "$2a$10$xgyQcIav6FTzNkQSvi.kQegBdVPTuzZ0Fox7n8ygKqDOrUaDpeSam",
     "hobbies": [
-      "Horse Riding",
-      "Leather Crafting",
-      "Reading",
       "Traveling",
-      "Gardening"
+      "Gardening",
+      "Drawing",
+      "Scuba Diving",
+      "Model Building"
     ]
-  },
-  {
-    "username": "erhher",
-    "email": "herherh@gmaige.cewg",
-    "password": "$2a$10$VoPF0kjtvvXGsDIUP.zk4uos/A61YHHhG8580ORi6KyhFgHD6csQi",
-    "hobbies": []
   }
 ]
