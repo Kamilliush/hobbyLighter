@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 import ProfileView from '@/views/profile/ProfileView.vue'
 import BadgesComponent from '@/components/BadgesComponent.vue'
@@ -9,7 +9,8 @@ import EventsChallengesComponent from '@/components/EventsChallengesComponent.vu
 import SignIn from '@/views/SignIn.vue'
 import SignUp from '@/views/SignUp.vue'
 import EventsView from '@/views/events/EventsView.vue'
-
+import HobbySelection from '@/components/HobbySelection.vue';
+import MainPage from "@/components/MainPage.vue";
 
 import App from '@/App.vue'
 
@@ -18,11 +19,10 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: App,
+      redirect: '/signin', // Redirect root to /signin
     },
     {
-      path: '/',
+      path: '/signin',
       name: 'SignIn',
       component: SignIn,
     },
@@ -47,28 +47,44 @@ const router = createRouter({
       ],
     },
     {
+      path: '/select-hobbies',
+      name: 'HobbySelection',
+      component: HobbySelection,
+    },
+    {
+      path: '/main',
+      name: 'MainPage',
+      component: MainPage,
+    },
+    {
       path: '/profile',
-      name: 'profile',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/profile/ProfileView.vue'),
+      name: 'ProfileView',
+      component: ProfileView,
       children: [
         {
           path: 'badges',
-          component: BadgesComponent, // Powiązanie trasy z komponentem Badges
+          name: 'Badges',
+          component: BadgesComponent,
         },
         {
           path: 'events',
-          component: ProfileEventsComponent, // Powiązanie trasy z komponentem Badges
+          name: 'ProfileEvents',
+          component: ProfileEventsComponent,
         },
         {
           path: 'posts',
-          component: ProfilePostsComponent, // Powiązanie trasy z komponentem Badges
+          name: 'ProfilePosts',
+          component: ProfilePostsComponent,
         },
       ],
     },
+    // Catch-all route for 404 Not Found
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('@/views/NotFound.vue'),
+    },
   ],
-})
+});
 
-export default router
+export default router;

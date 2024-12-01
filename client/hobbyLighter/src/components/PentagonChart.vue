@@ -5,9 +5,26 @@
 </template>
 
 <script>
-import { RadarController, Chart, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend } from 'chart.js';
+import {
+  RadarController,
+  Chart,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
-Chart.register(RadarController, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
+Chart.register(
+  RadarController,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
 
 export default {
   name: "RadarChart",
@@ -21,12 +38,23 @@ export default {
       default: () => ({}),
     },
   },
+  watch: {
+    chartData: {
+      handler() {
+        this.renderChart();
+      },
+      deep: true,
+    },
+  },
   mounted() {
     this.renderChart();
   },
   methods: {
     renderChart() {
-      new Chart(this.$refs.radarChart, {
+      if (this.chart) {
+        this.chart.destroy();
+      }
+      this.chart = new Chart(this.$refs.radarChart, {
         type: "radar",
         data: this.chartData,
         options: this.chartOptions,

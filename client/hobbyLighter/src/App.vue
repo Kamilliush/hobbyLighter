@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import { RouterLink, RouterView } from 'vue-router'
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Ustaw poprawne box-sizing */
+  box-sizing: border-box; 
 }
 
 html, body {

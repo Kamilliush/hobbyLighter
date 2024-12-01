@@ -1,0 +1,74 @@
+[
+  {
+    "username": "a",
+    "email": "a@b.c",
+    "password": "$2a$10$Vq2XNh.Xcd3wWD3M/CFgDu80qcdyj2URd0iCPrEFxsSWTEuXFuN5C",
+    "hobbies": [
+      "Gardening",
+      "Reading",
+      "Drawing",
+      "Horse Riding",
+      "Model Building"
+    ]
+  },
+  {
+    "username": "t",
+    "email": "t@c.gf",
+    "password": "$2a$10$IExmmF5CIRV9y04a.pnqselQY903BLUrcR7Lehd5yYZWTwWvnRhgi",
+    "hobbies": [
+      "Reading",
+      "Traveling",
+      "Music",
+      "Swimming",
+      "Writing"
+    ]
+  },
+  {
+    "username": "hhh",
+    "email": "hhh@gmail.com",
+    "password": "$2a$10$Jusa/82kKsbowhaL7vtHxeGsaSBgTJN5dsbBWb2T5TPgpFzjmQbeW",
+    "hobbies": [
+      "Music",
+      "Leather Crafting",
+      "Drawing",
+      "Gardening",
+      "Baking"
+    ]
+  },
+  {
+    "username": "tt",
+    "email": "t@g.c",
+    "password": "$2a$10$K8ZLnBhOXg0o7ElkIypY5utzCht71/A1RMN92u5ejWtke9VJGvuDS",
+    "hobbies": [
+      "Writing",
+      "Leather Crafting",
+      "Quilting",
+      "Traveling",
+      "Model Building"
+    ]
+  },
+  {
+    "username": "rr",
+    "email": "rr@r.c",
+    "password": "$2a$10$iFG56XHDSLP2mPQ12LYUHOErYgkLeIse.3Ph4uWYVDmFuyKJrMsn2",
+    "hobbies": [
+      "Drawing",
+      "Music",
+      "Woodworking",
+      "Traveling",
+      "Skydiving"
+    ]
+  },
+  {
+    "username": "kamil",
+    "email": "kamil@gmail.com",
+    "password": "$2a$10$xgyQcIav6FTzNkQSvi.kQegBdVPTuzZ0Fox7n8ygKqDOrUaDpeSam",
+    "hobbies": [
+      "Traveling",
+      "Gardening",
+      "Drawing",
+      "Scuba Diving",
+      "Model Building"
+    ]
+  }
+]
