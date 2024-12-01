@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import { useUserStore } from '@/stores/user';
+
 export default {
   name: "SignIn",
   data() {
@@ -70,6 +72,10 @@ export default {
         } else {
           localStorage.setItem("token", data.token);
 
+          // Store username in Pinia store and localStorage
+          const userStore = useUserStore();
+          userStore.setUsername(username);
+
           // Fetch user hobbies
           const userResponse = await fetch(`http://172.20.10.4:3000/api/users/hobbies`, {
             method: "GET",
@@ -102,38 +108,36 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center; /* Center container horizontally */
-  align-items: center; /* Center container vertically */
-  background-color: #ffffff; /* Set the background to white */
-  font-family: Arial, sans-serif; /* Optional: Set a default font */
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
 }
 
 /* Flex container to center the form */
 .container {
   display: flex;
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center horizontally */
-  justify-content: center; /* Center vertically */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 /* Logo style */
 .logo {
-  width: 180px; /* Slightly larger logo size */
-  margin-bottom: 30px; /* Add more space below logo */
+  width: 180px;
+  margin-bottom: 30px;
 }
 
 /* Auth-form styles */
 .auth-form {
-  width: 90%; /* Full width with responsive sizing */
-  max-width: 450px; /* Slightly larger maximum width */
+  width: 90%;
+  max-width: 450px;
   margin-top: 20px;
   display: flex;
-  flex-direction: column; /* Stack inputs and button vertically */
-  gap: 20px; /* Add more space between form elements */
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* Input group to wrap input field and icon */
@@ -142,36 +146,38 @@ body {
   width: 100%;
 }
 
+/* Input field styles */
 .input-field {
-  width: 100%; /* Full width of form */
-  padding: 18px; /* Slightly larger padding */
-  padding-right: 45px; /* Add space for icon on the right */
-  font-size: 1.3rem; /* Slightly larger font size */
-  border: 1.5px solid #ccc; /* Slightly thicker border */
-  border-radius: 8px; /* More rounded input fields */
-  box-sizing: border-box; /* Include padding in width */
+  width: 100%;
+  padding: 18px;
+  padding-right: 45px;
+  font-size: 1.3rem;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
+/* Input icon styles */
 .input-icon {
   position: absolute;
   top: 50%;
-  right: 15px; /* Position icon on the right */
+  right: 15px;
   transform: translateY(-50%);
   color: #aaa;
   font-size: 1.2rem;
-  cursor: pointer; /* Make the icon clickable */
+  cursor: pointer;
 }
 
 /* Auth-button styles */
 .auth-button {
-  width: 100%; /* Full width */
-  padding: 18px; /* Slightly larger padding */
-  font-size: 1.3rem; /* Slightly larger button font */
+  width: 100%;
+  padding: 18px;
+  font-size: 1.3rem;
   font-weight: bold;
   background-color: orange;
   color: white;
   border: none;
-  border-radius: 8px; /* More rounded corners */
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -181,20 +187,20 @@ body {
 
 /* Footer text styles */
 .footer-text {
-  margin-top: 15px; /* Space above the footer text */
-  font-size: 0.9rem; /* Smaller font size */
-  font-weight: 300; /* Light font weight for thinner text */
-  color: black; /* Text color as black */
+  margin-top: 15px;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: black;
 }
 
 .footer-text a {
   margin-left: 120px;
-  color: black; /* Link color */
+  color: black;
   text-decoration: none;
 }
 
 .footer-text a:hover {
-  text-decoration: underline; /* Underline link on hover */
+  text-decoration: underline;
 }
 
 /* Error styling */
@@ -205,21 +211,21 @@ body {
 /* Responsive design for smaller screens */
 @media screen and (max-width: 768px) {
   .logo {
-    width: 150px; /* Adjust logo size for smaller screens */
+    width: 150px;
   }
 
   .input-field {
-    font-size: 1.2rem; /* Adjust font size for inputs */
-    padding: 16px; /* Adjust padding for inputs */
+    font-size: 1.2rem;
+    padding: 16px;
   }
 
   .auth-button {
-    font-size: 1.2rem; /* Adjust button font size */
-    padding: 16px; /* Adjust padding for button */
+    font-size: 1.2rem;
+    padding: 16px;
   }
 
   .footer-text {
-    font-size: 0.85rem; /* Slightly smaller text size for mobile */
+    font-size: 0.85rem;
   }
 }
 </style>

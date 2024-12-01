@@ -50,6 +50,8 @@
 </template>
 
 <script>
+import { useUserStore } from '@/stores/user';
+
 export default {
   name: "SignUp",
   data() {
@@ -98,6 +100,11 @@ export default {
           alert("Registration successful!");
           const token = data.token;
           localStorage.setItem('token', token);
+
+          // Store username in Pinia store and localStorage
+          const userStore = useUserStore();
+          userStore.setUsername(username);
+
           // Redirect to hobby selection
           this.$router.push('/select-hobbies');
         }
@@ -167,37 +174,31 @@ body {
   position: relative;
   width: 100%;
   max-width: 450px;
-  margin-bottom: 20px; /* Increased margin between input groups */
+  margin-bottom: 20px; /* Increased margin between input fields */
 }
 
+/* Input icon styles */
 .input-icon {
   position: absolute;
   top: 50%;
-  right: 15px; /* Move icon to the right */
+  right: 15px;
   transform: translateY(-50%);
   color: #aaa;
   font-size: 1.2rem;
 }
 
+/* Input field styles */
 .input-field {
   width: 100%;
   padding: 18px;
-  padding-right: 45px; /* Add space for icon on the right */
+  padding-right: 45px;
   font-size: 1.3rem;
   border: 1.5px solid #ccc;
   border-radius: 8px;
   box-sizing: border-box;
 }
 
-.auth-form {
-  width: 90%;
-  max-width: 450px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  /* Removed gap property to control spacing via margin-bottom */
-}
-
+/* Auth-button styles */
 .auth-button {
   width: 100%;
   padding: 18px;
@@ -214,6 +215,7 @@ body {
   background-color: darkorange;
 }
 
+/* Footer text styles */
 .footer-text {
   margin-top: 15px;
   font-size: 0.9rem;
@@ -229,6 +231,7 @@ body {
   text-decoration: underline;
 }
 
+/* Error styling */
 .input-error {
   border: 2px solid red !important;
 }

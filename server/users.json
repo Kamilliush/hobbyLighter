@@ -70,5 +70,17 @@
       "Scuba Diving",
       "Model Building"
     ]
+  },
+  {
+    "username": "jakut",
+    "email": "jakutdev@c.c",
+    "password": "$2a$10$hm/x/MHJNKtaVJpulohccOQ/l.gb/VIxlVeQ0BOGCCmiA626j4qj2",
+    "hobbies": [
+      "Drawing",
+      "Quilting",
+      "Stand-up Comedy",
+      "Music",
+      "Traveling"
+    ]
   }
 ]
