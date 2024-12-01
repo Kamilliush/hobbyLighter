@@ -2,11 +2,11 @@
   "hobbies": [
     {
       "name": "Reading",
-      "count": 52
+      "count": 53
     },
     {
       "name": "Traveling",
-      "count": 42
+      "count": 44
     },
     {
       "name": "Cooking",
@@ -22,11 +22,11 @@
     },
     {
       "name": "Music",
-      "count": 10
+      "count": 11
     },
     {
       "name": "Sports",
-      "count": 8
+      "count": 10
     },
     {
       "name": "Drawing",
@@ -38,7 +38,7 @@
     },
     {
       "name": "Gaming",
-      "count": 3
+      "count": 4
     },
     {
       "name": "Hiking",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Cycling",
-      "count": 1
+      "count": 2
     },
     {
       "name": "Knitting",
@@ -66,11 +66,11 @@
     },
     {
       "name": "Dancing",
-      "count": 1
+      "count": 2
     },
     {
       "name": "Swimming",
-      "count": 1
+      "count": 2
     },
     {
       "name": "Running",
@@ -142,7 +142,7 @@
     },
     {
       "name": "Model Building",
-      "count": 1
+      "count": 2
     },
     {
       "name": "Puzzles",
@@ -166,11 +166,11 @@
     },
     {
       "name": "Collecting Antiques",
-      "count": 1
+      "count": 2
     },
     {
       "name": "Leather Crafting",
-      "count": 2
+      "count": 4
     },
     {
       "name": "Metalworking",
@@ -238,7 +238,7 @@
     },
     {
       "name": "Horse Riding",
-      "count": 2
+      "count": 3
     },
     {
       "name": "Sailing",

@@ -139,8 +139,10 @@ app.get("/api/hobbies", (req, res) => {
   }
   const data = fs.readFileSync(hobbiesFilePath, "utf-8");
   const hobbiesData = JSON.parse(data);
+  
   // Sort hobbies by count in descending order
   hobbiesData.hobbies.sort((a, b) => b.count - a.count);
+  
   // Return the list of hobby names
   res.status(200).json({ hobbies: hobbiesData.hobbies.map((h) => h.name) });
 });

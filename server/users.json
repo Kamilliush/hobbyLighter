@@ -82,5 +82,65 @@
       "Traveling",
       "Cooking"
     ]
+  },
+  {
+    "username": "Martyna",
+    "email": "yoyoyo@gmail.com",
+    "password": "$2a$10$qRSbnpNENPn66jJo0rAxp.VmzoK8pLnYjlM2HAG5Nn3rXjtyVPGYa",
+    "hobbies": [
+      "Reading",
+      "Model Building",
+      "Swimming",
+      "Cycling",
+      "Horse Riding"
+    ]
+  },
+  {
+    "username": "aaaa",
+    "email": "aaaa@g.c",
+    "password": "$2a$10$6c9l83c12D4Q1g/Q2JimaOq.Aup6lD2qFZGLv.mrmIxzwUFamC8.q",
+    "hobbies": [
+      "Leather Crafting",
+      "Sports",
+      "Traveling",
+      "Collecting Antiques",
+      "Gaming"
+    ]
+  },
+  {
+    "username": "SkibidiMartyna",
+    "email": "skibidi@g.c",
+    "password": "$2a$10$3kbtnnsRD22nw9seuj/kcuC3hakg4NSXShM/JUBJdbutg0j9lBt9e",
+    "hobbies": []
+  },
+  {
+    "username": "vvv",
+    "email": "vvv@v.v",
+    "password": "$2a$10$7Zyr0/74.Gis6EIyBry7L.WWciYvgwMmBaqltKf6PjjeIXGeUABAa",
+    "hobbies": []
+  },
+  {
+    "username": "ddd",
+    "email": "ddd@d.c",
+    "password": "$2a$10$Yl6HrsMPnQi0lMxNR0EY.egN3h/NV3KknNnEr/1VLe4bAy5NWHZMy",
+    "hobbies": []
+  },
+  {
+    "username": "ddda",
+    "email": "ddd@d.c",
+    "password": "$2a$10$k5ZHJR7YA0NQg4ai/hqWz.ZgvA.WItqCQ3qs8fANoW4ho4qjhsrdi",
+    "hobbies": []
+  },
+  {
+    "username": "ffff",
+    "email": "ffff@gmail.com",
+    "password": "$2a$10$g5dj6Q3YC7O/Dj3MVDoQyuE6BZwDmtCo8B4qkty1NbD8yQMPJ9w0W",
+    "hobbies": [
+      "Traveling",
+      "Sports",
+      "Music",
+      "Leather Crafting",
+      "Dancing"
+    ]
   }
 ]

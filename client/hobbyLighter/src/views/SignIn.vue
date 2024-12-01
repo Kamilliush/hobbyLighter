@@ -10,7 +10,6 @@
           placeholder="Username"
           class="input-field"
         />
-        <font-awesome-icon icon="user" class="input-icon" />
       </div>
       <div class="input-group">
         <input
@@ -20,11 +19,9 @@
           placeholder="Password"
           class="input-field"
         />
-        <font-awesome-icon
-          :icon="passwordVisible ? 'eye' : 'eye-slash'"
-          class="input-icon"
-          @click="togglePasswordVisibility"
-        />
+        <span class="input-icon" @click="togglePasswordVisibility">
+          {{ passwordVisible ? '👁' : '👁‍🗨' }}
+        </span>
       </div>
       <button type="submit" class="auth-button">Sign In</button>
     </form>
@@ -60,7 +57,7 @@ export default {
       }
 
       try {
-        const response = await fetch(`/api/auth/login`, {
+        const response = await fetch(`http://172.20.10.4:3000/api/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, password }),
@@ -70,17 +67,26 @@ export default {
         if (!response.ok) {
           this.error.username = true;
           this.error.password = true;
-          alert(data.message || "Invalid credentials");
         } else {
-          console.log("Login successful!", data.token);
-          // Store the token for authenticated requests
-          localStorage.setItem('token', data.token);
-          // Redirect to the /main page
+          localStorage.setItem("token", data.token);
+
+          // Pobierz hobby użytkownika
+          const userResponse = await fetch(`http://172.20.10.4:3000/api/users/hobbies`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${data.token}`,
+            },
+          });
+          const userData = await userResponse.json();
+          if (userResponse.ok) {
+            localStorage.setItem("userHobbies", JSON.stringify(userData.hobbies));
+          }
+
+          // Przekierowanie do strony głównej
           this.$router.push("/main");
         }
       } catch (err) {
         console.error("Error during login:", err);
-        alert("An error occurred during login. Please try again.");
       }
     },
   },

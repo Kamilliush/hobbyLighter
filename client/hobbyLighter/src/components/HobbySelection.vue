@@ -1,118 +1,119 @@
 <template>
-    <div class="hobby-selection-container">
-      <div class="popup">
-        <h2>What's your vibe today and your passion tomorrow? Share your hobbies with us!</h2>
-        <div class="hobby-input-container">
-          <input
-            type="text"
-            v-model="searchQuery"
-            @input="searchHobbies"
-            placeholder="Type to search hobbies..."
-            class="input-field"
-          />
-          <ul v-if="suggestions.length > 0" class="suggestions-list">
-            <li
-              v-for="(hobby, index) in suggestions"
-              :key="index"
-              @click="addHobby(hobby)"
-            >
-              {{ hobby }}
-            </li>
-          </ul>
-        </div>
-        <div class="selected-hobbies">
-          <p>Selected Hobbies ({{ selectedHobbies.length }}/5):</p>
-          <div class="hobbies-list">
-            <span v-for="(hobby, index) in selectedHobbies" :key="index" class="hobby-item">
-              {{ hobby }}
-              <button @click="removeHobby(index)">x</button>
-            </span>
-          </div>
-        </div>
-        <button
-          :disabled="selectedHobbies.length < 5"
-          @click="submitHobbies"
-          class="auth-button"
-        >
-          Submit
-        </button>
+  <div class="hobby-selection-container">
+    <div class="popup">
+      <h2>What's your vibe today and your passion tomorrow? Share your hobbies with us!</h2>
+      <div class="hobby-input-container">
+        <input
+          type="text"
+          v-model="searchQuery"
+          @input="searchHobbies"
+          placeholder="Type to search hobbies..."
+          class="input-field"
+        />
+        <ul v-if="suggestions.length > 0" class="suggestions-list">
+          <li
+            v-for="(hobby, index) in suggestions"
+            :key="index"
+            @click="addHobby(hobby)"
+          >
+            {{ hobby }}
+          </li>
+        </ul>
       </div>
+      <div class="selected-hobbies">
+        <p>Selected Hobbies ({{ selectedHobbies.length }}/5):</p>
+        <div class="hobbies-list">
+          <span v-for="(hobby, index) in selectedHobbies" :key="index" class="hobby-item">
+            {{ hobby }}
+            <button @click="removeHobby(index)">x</button>
+          </span>
+        </div>
+      </div>
+      <button
+        :disabled="selectedHobbies.length < 5"
+        @click="submitHobbies"
+        class="auth-button"
+      >
+        Submit
+      </button>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'HobbySelection',
-    data() {
-      return {
-        searchQuery: '',
-        suggestions: [],
-        selectedHobbies: [],
-        allHobbies: [], // Loaded from the server
-      };
+  </div>
+</template>
+
+<script>
+export default {
+  name: "HobbySelection",
+  data() {
+    return {
+      searchQuery: "",
+      suggestions: [],
+      selectedHobbies: [],
+      allHobbies: [], // Wszystkie hobby z serwera
+    };
+  },
+  mounted() {
+    this.fetchAllHobbies();
+  },
+  methods: {
+    async fetchAllHobbies() {
+      try {
+        const response = await fetch("/api/hobbies");
+        const data = await response.json();
+        this.allHobbies = data.hobbies; // Hobby z serwera, posortowane według popularności
+      } catch (error) {
+        console.error("Error fetching hobbies:", error);
+      }
     },
-    mounted() {
-      // Load hobbies from the server
-      this.fetchAllHobbies();
-    },
-    methods: {
-      async fetchAllHobbies() {
-        try {
-          const response = await fetch('/api/hobbies');
-          const data = await response.json();
-          this.allHobbies = data.hobbies;
-        } catch (error) {
-          console.error('Error fetching hobbies:', error);
-        }
-      },
-      searchHobbies() {
-        const query = this.searchQuery.toLowerCase();
-        if (query.length > 0) {
-          this.suggestions = this.allHobbies
-            .filter(hobby => hobby.toLowerCase().includes(query))
-            .slice(0, 5); // Show top 5 suggestions
-        } else {
-          this.suggestions = [];
-        }
-      },
-      addHobby(hobby) {
-        if (this.selectedHobbies.length < 5 && !this.selectedHobbies.includes(hobby)) {
-          this.selectedHobbies.push(hobby);
-        }
-        this.searchQuery = '';
+    searchHobbies() {
+      const query = this.searchQuery.toLowerCase();
+      if (query.length > 0) {
+        this.suggestions = this.allHobbies
+          .filter(
+            (hobby) =>
+              hobby.toLowerCase().includes(query) &&
+              !this.selectedHobbies.includes(hobby)
+          )
+          .slice(0, 5); // Pokaż maksymalnie 5 sugestii
+      } else {
         this.suggestions = [];
-      },
-      removeHobby(index) {
-        this.selectedHobbies.splice(index, 1);
-      },
-      async submitHobbies() {
-        try {
-          const token = localStorage.getItem('token'); // Retrieve token from local storage
-          const response = await fetch('/api/users/hobbies', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`,
-            },
-            body: JSON.stringify({ hobbies: this.selectedHobbies }),
-          });
-          if (response.ok) {
-            // Hobbies saved successfully
-            alert('Hobbies saved successfully!');
-            localStorage.removeItem('token'); // Clear the token
-            this.$router.push('/'); // Redirect to login page
-          } else {
-            const errorData = await response.json();
-            console.error('Error saving hobbies:', errorData.message);
-          }
-        } catch (error) {
-          console.error('Error submitting hobbies:', error);
-        }
-      },
+      }
     },
-  };
-  </script>
-  
+    addHobby(hobby) {
+      if (this.selectedHobbies.length < 5 && !this.selectedHobbies.includes(hobby)) {
+        this.selectedHobbies.push(hobby);
+      }
+      this.searchQuery = "";
+      this.suggestions = [];
+    },
+    removeHobby(index) {
+      this.selectedHobbies.splice(index, 1);
+    },
+    async submitHobbies() {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("/api/users/hobbies", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ hobbies: this.selectedHobbies }),
+        });
+        if (response.ok) {
+          alert("Hobbies saved successfully!");
+          this.$router.push("/main");
+        } else {
+          const errorData = await response.json();
+          console.error("Error saving hobbies:", errorData.message);
+        }
+      } catch (error) {
+        console.error("Error submitting hobbies:", error);
+      }
+    },
+  },
+};
+</script>
+
   <style>
   .hobby-selection-container {
     position: fixed;
